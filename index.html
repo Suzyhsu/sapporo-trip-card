@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>札幌跑旅行前小卡 🏃‍♀️🍁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --snow:#fdfaf6;
+    --cream:#fff7ee;
+    --ink:#4a3f3a;
+    --soft:#8a7a70;
+    --momiji:#e0633f;     /* 紅葉橘紅 */
+    --momiji-dark:#c14a2c;
+    --sakura:#f4c4c0;
+    --leaf:#c8893f;       /* 暖黃 */
+    --sky:#7fa9c4;
+    --line:#efe2d4;
+    --card:#ffffff;
+    --shadow:0 6px 22px rgba(120,80,60,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Zen Maru Gothic','Noto Sans TC','Kosugi Maru','Microsoft JhengHei',sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, #fff1e6 0, transparent 32%),
+      radial-gradient(circle at 88% 4%, #fdeceb 0, transparent 30%),
+      var(--snow);
+    color:var(--ink);
+    line-height:1.7;
+    padding:22px 14px 60px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+
+  /* ── 標題 ── */
+  header{
+    text-align:center;
+    background:linear-gradient(135deg,#fff 0%,var(--cream) 100%);
+    border:2px dashed var(--sakura);
+    border-radius:26px;
+    padding:26px 22px 22px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  header::before{content:"🍁";position:absolute;top:12px;left:18px;font-size:26px;opacity:.7;transform:rotate(-18deg);}
+  header::after{content:"❄️";position:absolute;top:14px;right:18px;font-size:22px;opacity:.65;}
+  .ttl{font-size:27px;font-weight:900;letter-spacing:1px;color:var(--momiji-dark);}
+  .ttl small{display:block;font-size:13px;color:var(--soft);font-weight:500;letter-spacing:3px;margin-top:4px;}
+  .meta{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .chip{
+    background:var(--snow);border:1px solid var(--line);border-radius:999px;
+    padding:5px 13px;font-size:12.5px;color:var(--ink);white-space:nowrap;
+  }
+  .chip b{color:var(--momiji-dark);}
+
+  /* ── 區塊標題 ── */
+  .sec{margin-top:26px;}
+  .sec-h{
+    display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;
+    color:var(--momiji-dark);margin:0 4px 12px;
+  }
+  .sec-h .dot{width:11px;height:11px;border-radius:50%;background:var(--momiji);box-shadow:0 0 0 4px #f7d6c6;}
+
+  /* ── 日卡 ── */
+  .day{
+    background:var(--card);border-radius:20px;box-shadow:var(--shadow);
+    padding:15px 17px;margin-bottom:13px;border:1px solid var(--line);
+    position:relative;
+  }
+  .day-top{display:flex;align-items:center;gap:11px;margin-bottom:7px;}
+  .date-badge{
+    flex:0 0 auto;text-align:center;background:linear-gradient(160deg,#fff,var(--cream));
+    border:1.5px solid var(--sakura);border-radius:15px;padding:5px 10px;min-width:62px;
+  }
+  .date-badge .d{font-size:19px;font-weight:900;color:var(--momiji-dark);line-height:1.1;}
+  .date-badge .w{font-size:11px;color:var(--soft);}
+  .day-title{font-size:15.5px;font-weight:700;}
+  .day-title .em{font-size:18px;}
+  .day-body{font-size:13.5px;color:#5d514a;padding-left:2px;}
+  .day-body .t{color:var(--sky);font-weight:700;}
+  .day.race{border:2px solid var(--momiji);background:linear-gradient(180deg,#fff8f4,#fff);}
+  .day.race .date-badge{background:var(--momiji);border-color:var(--momiji);}
+  .day.race .date-badge .d,.day.race .date-badge .w{color:#fff;}
+
+  /* ── 重點盒 ── */
+  .box{
+    border-radius:18px;padding:15px 17px;margin-bottom:13px;box-shadow:var(--shadow);
+    border:1px solid var(--line);background:var(--card);
+  }
+  .box.warn{background:linear-gradient(180deg,#fff5f3,#fff);border:1.5px solid var(--sakura);}
+  .box.tip{background:linear-gradient(180deg,#fbf6ee,#fff);border:1.5px solid #ecd9bd;}
+  .box-h{font-size:14.5px;font-weight:700;color:var(--momiji-dark);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+  .box ul{list-style:none;}
+  .box li{font-size:13px;padding:3px 0 3px 20px;position:relative;color:#5d514a;}
+  .box li::before{content:"🔸";position:absolute;left:0;top:3px;font-size:10px;}
+  .box.warn li::before{content:"⚠️";font-size:11px;}
+  .box li b{color:var(--ink);}
+  .hl{background:linear-gradient(transparent 60%,#ffe1b8 60%);font-weight:700;}
+
+  /* ── 連絡資訊 ── */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .info{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:12px 14px;box-shadow:var(--shadow);
+  }
+  .info .lab{font-size:11.5px;color:var(--soft);}
+  .info .val{font-size:14px;font-weight:700;color:var(--ink);margin-top:2px;}
+  .info .sub{font-size:12px;color:#6e615a;margin-top:3px;}
+  .info a{color:var(--momiji-dark);text-decoration:none;}
+
+  /* ── checklist ── */
+  .check{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);}
+  .check label{display:flex;align-items:flex-start;gap:9px;font-size:13px;padding:5px 0;color:#5d514a;cursor:pointer;border-bottom:1px dashed var(--line);}
+  .check label:last-child{border-bottom:none;}
+  .check input{margin-top:4px;accent-color:var(--momiji);transform:scale(1.15);}
+
+  footer{text-align:center;margin-top:26px;font-size:11.5px;color:var(--soft);}
+  .heart{color:var(--momiji);}
+
+  /* ── 路線圖（站點串接）── */
+  .route{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:16px 18px;box-shadow:var(--shadow);margin-bottom:13px;
+  }
+  .route-h{font-size:14px;font-weight:700;color:var(--momiji-dark);margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+  .stops{display:flex;flex-direction:column;gap:0;}
+  .stop{display:flex;align-items:flex-start;gap:11px;position:relative;}
+  .stop .node{flex:0 0 auto;width:15px;display:flex;flex-direction:column;align-items:center;}
+  .stop .circle{width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--momiji);z-index:1;margin-top:3px;}
+  .stop.start .circle{background:var(--momiji);}
+  .stop.end .circle{background:var(--sky);border-color:var(--sky);}
+  .stop .bar{width:3px;flex:1;background:linear-gradient(var(--sakura),var(--leaf));min-height:26px;}
+  .stop:last-child .bar{display:none;}
+  .stop .txt{padding-bottom:14px;flex:1;}
+  .stop .name{font-size:13.5px;font-weight:700;color:var(--ink);}
+  .stop .leg{display:inline-block;font-size:11px;color:#fff;background:var(--leaf);border-radius:999px;padding:1px 9px;margin:3px 0;}
+  .stop .leg.train{background:var(--sky);}
+  .stop .leg.walk{background:#a9b86b;}
+  .stop .leg.bus{background:var(--momiji);}
+  .stop .desc{font-size:12px;color:#6e615a;}
+  .opt{font-size:12px;color:#6e615a;background:var(--cream);border-radius:12px;padding:9px 12px;margin-top:6px;border:1px dashed var(--line);}
+  .opt b{color:var(--momiji-dark);}
+
+  @media(max-width:480px){
+    .info-grid{grid-template-columns:1fr;}
+    .ttl{font-size:23px;}
+  }
+  @media print{
+    body{background:#fff;padding:0;}
+    .day,.box,.info,.check,header{box-shadow:none;}
+    #leaves,#topBtn{display:none;}
+  }
+
+  /* ── 飄落動畫畫布 ── */
+  #leaves{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  .wrap{position:relative;z-index:1;}
+
+  /* ── 倒數計時 ── */
+  .countdown{margin-top:14px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .cd{
+    background:linear-gradient(160deg,#fff,var(--cream));border:1.5px solid var(--sakura);
+    border-radius:16px;padding:7px 15px;text-align:center;min-width:92px;
+    transition:transform .2s;
+  }
+  .cd:hover{transform:translateY(-3px) scale(1.04);}
+  .cd .num{font-size:24px;font-weight:900;color:var(--momiji-dark);line-height:1;}
+  .cd .lbl{font-size:10.5px;color:var(--soft);margin-top:3px;letter-spacing:.5px;}
+  .cd.go .num{color:var(--leaf);}
+
+  /* ── 進度條 ── */
+  .progress-wrap{margin:0 4px 12px;}
+  .progress-bar{height:14px;background:var(--line);border-radius:999px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.08);}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--leaf),var(--momiji));border-radius:999px;transition:width .6s cubic-bezier(.22,1,.36,1);}
+  .progress-txt{font-size:12px;color:var(--soft);text-align:right;margin-top:5px;}
+  .progress-txt b{color:var(--momiji-dark);}
+
+  /* ── checklist 勾選動效 ── */
+  .check label{transition:opacity .25s;}
+  .check label.done{opacity:.55;text-decoration:line-through;text-decoration-color:var(--sakura);}
+
+  /* ── 日卡點擊完成印章 ── */
+  .day{cursor:pointer;transition:transform .15s,box-shadow .2s;}
+  .day:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(120,80,60,.16);}
+  .day:active{transform:scale(.98);}
+  .day .stamp{
+    position:absolute;top:50%;right:18px;transform:translateY(-50%) rotate(-14deg) scale(0);
+    font-size:13px;font-weight:900;color:#fff;background:var(--leaf);
+    border-radius:10px;padding:4px 11px;opacity:0;transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .25s;
+    box-shadow:0 3px 8px rgba(160,120,60,.3);white-space:nowrap;pointer-events:none;
+  }
+  .day.cleared .stamp{transform:translateY(-50%) rotate(-14deg) scale(1);opacity:1;}
+  .day.cleared{background:linear-gradient(180deg,#f6f9ee,#fff);}
+  .day.race.cleared{background:linear-gradient(180deg,#fff2ec,#fff);}
+
+  /* ── 今日高亮 ── */
+  .day.today{border:2px solid var(--leaf);box-shadow:0 0 0 4px #f0e4c4;}
+  .day.today::after{content:"今日";position:absolute;top:-9px;left:16px;background:var(--leaf);color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:999px;}
+
+  /* ── 回到頂部萌按鈕 ── */
+  #topBtn{
+    position:fixed;right:16px;bottom:18px;z-index:5;width:50px;height:50px;border:none;
+    border-radius:50%;background:linear-gradient(160deg,#fff,var(--cream));
+    border:2px solid var(--sakura);font-size:23px;cursor:pointer;box-shadow:var(--shadow);
+    opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;
+  }
+  #topBtn.show{opacity:1;transform:translateY(0);}
+  #topBtn:hover{transform:translateY(-3px) rotate(-8deg);}
+
+  /* ── 彩帶 ── */
+  .confetti{position:fixed;top:-10px;z-index:10;font-size:18px;pointer-events:none;animation:fall-confetti linear forwards;}
+  @keyframes fall-confetti{to{transform:translateY(105vh) rotate(540deg);opacity:.9;}}
+
+  @keyframes pop{0%{transform:scale(1);}50%{transform:scale(1.18);}100%{transform:scale(1);}}
+  .pop{animation:pop .4s ease;}
+
+  @media(prefers-reduced-motion:reduce){
+    #leaves{display:none;}
+    .confetti{display:none;}
+  }
+</style>
+</head>
+<body>
+<canvas id="leaves"></canvas>
+<div class="wrap">
+
+  <header>
+    <div class="ttl">札幌 親子跑旅 🏃‍♀️🏃‍♂️
+      <small>SAPPORO MARATHON TRIP ・ 2026.10.1 → 10.6</small>
+    </div>
+    <div class="meta">
+      <span class="chip">✈️ 去 <b>BR116</b> 10/1 15:00 抵</span>
+      <span class="chip">✈️ 回 <b>BR115</b> 10/6 16:15 飛</span>
+      <span class="chip">🏨 暖雪 札幌（全程連泊）</span>
+      <span class="chip">🏅 10/4 札幌馬拉松</span>
+    </div>
+    <div class="countdown">
+      <div class="cd" id="cdTrip"><div class="num">–</div><div class="lbl">天後出發 ✈️</div></div>
+      <div class="cd" id="cdRace"><div class="num">–</div><div class="lbl">天後開跑 🏅</div></div>
+    </div>
+  </header>
+
+  <!-- 比賽日重點 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🏅 比賽日重點 ・ 10/4(日)</div>
+    <div class="box warn">
+      <div class="box-h">🚆 當天動線（⚠️ 不能叫計程車直達會場！）</div>
+      <ul>
+        <li><b class="hl">約 7:00 出門</b>：飯店步行 → すすきの駅</li>
+        <li>南北線直達 <b>真駒内駅</b>（終點・約17分・免轉車）</li>
+        <li>轉 <b>大會接駁巴士</b> → 「真駒内競技場前」（240円・約7分・可刷IC卡）</li>
+        <li>接駁中途不可下車、滿車即發；回程 10:30–14:30</li>
+      </ul>
+    </div>
+    <div class="info-grid">
+      <div class="info"><div class="lab">爸爸 10K</div><div class="val">9:00 起跑</div><div class="sub">8:30 集合・80分關門</div></div>
+      <div class="info"><div class="lab">媽媽・我・先生 半馬21K</div><div class="val">9:30 起跑</div><div class="sub">第2波・約8分/km關門</div></div>
+    </div>
+    <div class="box tip" style="margin-top:13px;">
+      <div class="box-h">💡 賽後</div>
+      <ul>
+        <li>全家會合 → 接駁回飯店 <b>泡暖雪溫泉</b> 放鬆肌肉</li>
+        <li>當天吃清淡一點，<b>慶功大餐排 10/5</b> 最理想</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 每日行程 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>📅 每日行程（推薦版 A）</div>
+
+    <div class="day" data-date="2026-10-01">
+      <div class="day-top">
+        <div class="date-badge"><div class="d">10/1</div><div class="w">四 Thu</div></div>
+        <div class="day-title"><span class="em">🛬</span> 抵達 ＋ 領號碼布</div>
+      </div>
+      <div class="day-body"><span class="t">15:00</span> 抵達 → ~17:00 入住 → 東豐線到 <b>光星店領 4 人號碼布＋T恤</b>（21:00前・帶護照）→ すすきの清淡晚餐、早睡</div>
+      <div class="stamp">✓ 完成！</div>
+    </div>
+
+    <div class="day" data-date="2026-10-02">
+      <div class="day-top">
+        <div class="date-badge"><div class="d">10/2</div><div class="w">五 Fri</div></div>
+        <div class="day-title"><span class="em">🚃</span> 小樽半日慢遊</div>
+      </div>
+      <div class="day-body">JR 快速（~33分・800円）<b>南小樽進</b>（有電梯）→ 堺町通・LeTAO → 午餐壽司 → 運河 → 傍晚回札幌泡湯</div>
+      <div class="stamp">✓ 完成！</div>
+    </div>
+
+    <div class="day" data-date="2026-10-03">
+      <div class="day-top">
+        <div class="date-badge"><div class="d">10/3</div><div class="w">六 Sat</div></div>
+        <div class="day-title"><span class="em">☕</span> 賽前調整日</div>
+      </div>
+      <div class="day-body">睡到自然醒（號碼布已領）→ 大通公園散步／車站地下街 → 不排操勞景點 → <b>碳水晚餐、早睡</b></div>
+      <div class="stamp">✓ 完成！</div>
+    </div>
+
+    <div class="day race" data-date="2026-10-04">
+      <div class="day-top">
+        <div class="date-badge"><div class="d">10/4</div><div class="w">日 Sun</div></div>
+        <div class="day-title"><span class="em">🏅</span> 札幌馬拉松（全家參賽）</div>
+      </div>
+      <div class="day-body">~7:00 出門 → 真駒内會場 → 爸爸 9:00 / 半馬三人 9:30 → 賽後回飯店 <b>泡溫泉</b>、附近清淡晚餐慶功</div>
+      <div class="stamp">🏅 完賽！</div>
+    </div>
+
+    <div class="day" data-date="2026-10-05">
+      <div class="day-top">
+        <div class="date-badge"><div class="d">10/5</div><div class="w">一 Mon</div></div>
+        <div class="day-title"><span class="em">🍜</span> 賽後恢復日</div>
+      </div>
+      <div class="day-body">睡飽 → <b>二條市場</b>海鮮丼（徒步5分）→ 下午 <b>藻岩山纜車看紅葉夜景</b> → 晚上燒肉／螃蟹／壽司 <b>慶功大餐</b></div>
+      <div class="stamp">✓ 完成！</div>
+    </div>
+
+    <div class="day" data-date="2026-10-06">
+      <div class="day-top">
+        <div class="date-badge"><div class="d">10/6</div><div class="w">二 Tue</div></div>
+        <div class="day-title"><span class="em">🎁</span> 採買 ＋ 回程</div>
+      </div>
+      <div class="day-body"><b>11:00 前退房</b>寄行李 → 狸小路／大通採買 → <span class="t">~11:30–12:00</span> 出發機場 → BR115 16:15（國際線提早報到）</div>
+      <div class="stamp">✓ 完成！</div>
+    </div>
+  </div>
+
+  <!-- 機場到飯店 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🛬 機場 → 飯店（10/1 抵達）</div>
+    <div class="route">
+      <div class="route-h">🚆 方案① JR：最快最省（推薦・約 50–60 分）</div>
+      <div class="stops">
+        <div class="stop start">
+          <div class="node"><div class="circle"></div><div class="bar"></div></div>
+          <div class="txt"><div class="name">新千歳空港駅</div><span class="leg train">JR快速エアポート・36–43分・1,230円</span><div class="desc">空港地下直結；想坐穩可加 uシート +840円（有大行李區）</div></div>
+        </div>
+        <div class="stop">
+          <div class="node"><div class="circle"></div><div class="bar"></div></div>
+          <div class="txt"><div class="name">札幌駅</div><span class="leg walk">站內轉乘</span> <span class="leg train">地下鐵東豐線・約7分・210円</span><div class="desc">轉「福住」方向</div></div>
+        </div>
+        <div class="stop end">
+          <div class="node"><div class="circle"></div></div>
+          <div class="txt"><div class="name">豐水すすきの駅 → 飯店徒步4分 🏨</div><div class="desc">合計約 ¥1,440／人・約 50–60 分</div></div>
+        </div>
+      </div>
+      <div class="opt">😌 <b>方案② 空港連絡巴士</b>（行李多、想輕鬆）：新千歳空港巴士站 → 直達「すすきの」，1,300–1,400円・約1小時強・<b>有座位＋行李托運</b>，不用拖行李轉車。長輩友善但較慢、易受路況影響。</div>
+    </div>
+  </div>
+
+  <!-- 小樽散步地圖 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🗺️ 小樽散步路線（10/2・南小樽進，全程下坡）</div>
+    <div class="route">
+      <div class="route-h">🚃 札幌駅 → 南小樽（JR快速・約33分・800円）</div>
+      <div class="stops">
+        <div class="stop start">
+          <div class="node"><div class="circle"></div><div class="bar"></div></div>
+          <div class="txt"><div class="name">① 南小樽駅</div><span class="leg walk">徒步7分・下坡</span><div class="desc">從這站進最輕鬆，一路往海邊下坡</div></div>
+        </div>
+        <div class="stop">
+          <div class="node"><div class="circle"></div><div class="bar"></div></div>
+          <div class="txt"><div class="name">② メルヘン交差點・LeTAO 本店</div><span class="leg walk">逛 堺町通 約900m</span><div class="desc">蒸氣鐘、音樂盒堂、LeTAO 雙層起司蛋糕（2F咖啡）</div></div>
+        </div>
+        <div class="stop">
+          <div class="node"><div class="circle"></div><div class="bar"></div></div>
+          <div class="txt"><div class="name">③ 堺町通商店街</div><span class="leg walk">邊走邊吃</span><div class="desc">北一硝子、かま栄炸物、ソフトクリーム；午餐壽司</div></div>
+        </div>
+        <div class="stop">
+          <div class="node"><div class="circle"></div><div class="bar"></div></div>
+          <div class="txt"><div class="name">④ 小樽運河・淺草橋</div><span class="leg walk">徒步8–10分到小樽駅</span><div class="desc">招牌打卡點；傍晚瓦斯燈＋倉庫點燈最美（日落後）</div></div>
+        </div>
+        <div class="stop end">
+          <div class="node"><div class="circle"></div></div>
+          <div class="txt"><div class="name">⑤ 小樽駅 → JR 回札幌 🏨</div><div class="desc">末班約 23:08；兩站皆有電梯＋置物櫃</div></div>
+        </div>
+      </div>
+      <div class="opt">💡 <b>為什麼南小樽進？</b> 南小樽地勢高，往運河方向是<b>連續下坡</b>，長輩走起來最省力；逛完從平地的小樽駅搭車回程。反方向則要爬坡。</div>
+    </div>
+  </div>
+
+  <!-- 藻岩山 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🚠 藻岩山纜車（10/5 賽後恢復日）</div>
+    <div class="box tip">
+      <div class="box-h">🍁 營業時間 ＆ 重點</div>
+      <ul>
+        <li><b>夏期（4–11月）10:30–22:00</b>，上行末班 21:30；<b class="hl">週一正常營業</b>（僅惡天候／檢修停運）</li>
+        <li>10 月中旬正逢<b>紅葉季</b>，傍晚上山可一次收進夕陽＋夜景</li>
+        <li>山頂為「日本新三大夜景」之一，有展望餐廳「ザ・ジュエルズ」</li>
+        <li>路線：市電（環狀線）→「ロープウェイ入口」站 → 接駁巴士 → 山麓駅 → 纜車 → もーりすカー登頂（<b>全程無障礙、長輩友善</b>）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 慶功餐廳 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🍽️ 賽後慶功餐廳（10/5）</div>
+    <div class="box">
+      <ul>
+        <li><b>二條市場</b>（大磯／小熊商店／でめきん）— 海鮮丼・無休・徒步5分</li>
+        <li><b>じゃんごー</b> — 成吉思汗吃到飽 3,480円起・日曜營業・12:00–24:00</li>
+        <li><b>すしどんぶり</b> — 飯店型海鮮丼・不排隊・多語點餐・一家人友善</li>
+        <li><b>かに将軍／かに本家</b> — 帝王蟹會席・座敷有椅適合長輩</li>
+      </ul>
+      <div style="font-size:12px;color:var(--momiji-dark);margin-top:8px;">⚠️ 蟹會席／燒肉名店假日易滿，<b>出發前 1–2 週先訂 10/5 晚餐</b></div>
+    </div>
+  </div>
+
+  <!-- 重要連絡 -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>📞 重要連絡資訊</div>
+    <div class="info-grid">
+      <div class="info"><div class="lab">🏨 暖雪 札幌</div><div class="val"><a href="tel:0115904177">011-590-4177</a></div><div class="sub">中央区南6条東2丁目1-1<br>豐水すすきの駅徒步4分・退房11:00</div></div>
+      <div class="info"><div class="lab">🛍️ Sports Depo 光星店</div><div class="val"><a href="tel:0117211565">011-721-1565</a></div><div class="sub">東区北9条東4丁目1-10<br>10:00–21:00・北13条東駅徒步7分</div></div>
+      <div class="info"><div class="lab">🏃 札幌市運動協會（大會）</div><div class="val"><a href="tel:0115305562">011-530-5562</a></div><div class="sub">平日 9:00–17:00</div></div>
+      <div class="info"><div class="lab">📋 RUNNET 報名確認</div><div class="val">見確認信</div><div class="sub">洽詢番号在各自報名信・領號碼布用</div></div>
+    </div>
+  </div>
+
+  <!-- checklist -->
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>✅ 出發前確認清單</div>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+      <div class="progress-txt"><b id="progNum">0</b> / 7 完成　<span id="progEmoji">🐿️ 一起加油！</span></div>
+    </div>
+    <div class="check" id="checklist">
+      <label><input type="checkbox">四人 RUNNET 確認信都收到・email/緊急電話正確</label>
+      <label><input type="checkbox">10/1 到光星店領號碼布（四人本人・帶護照・10/3 19:00前）</label>
+      <label><input type="checkbox"><b>上官網查第51回接駁巴士最新時刻</b>（本卡為2025暫定）</label>
+      <label><input type="checkbox">賽事裝備：跑鞋・別針・補給・賽後保暖衣</label>
+      <label><input type="checkbox">訂 10/5 慶功晚餐（蟹／燒肉名店）</label>
+      <label><input type="checkbox">日幣現金 ＋ IC卡（Suica/Kitaca，地鐵接駁都可用）</label>
+      <label><input type="checkbox">10/6 回程：11:00退房 → ~11:30–12:00出發 → BR115</label>
+    </div>
+  </div>
+
+  <footer>
+    🌸 賽前保留體力・賽後溫泉恢復・全家順利完賽 🌸<br>
+    Made with <span class="heart">♥</span> for 爸爸・媽媽・先生・我
+  </footer>
+
+</div>
+
+<button id="topBtn" title="回到頂部">🐿️</button>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 1. 倒數計時 ── */
+  function daysUntil(target){
+    var now = new Date();
+    var t = new Date(target+'T00:00:00');
+    var d0 = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    return Math.round((t - d0)/86400000);
+  }
+  function setCd(id, days, goLabel){
+    var el = document.getElementById(id); if(!el) return;
+    var num = el.querySelector('.num');
+    if(days > 0){ num.textContent = days; }
+    else if(days === 0){ num.textContent = '🎉'; el.classList.add('go'); el.querySelector('.lbl').textContent = goLabel; }
+    else { num.textContent = '✓'; el.classList.add('go'); el.querySelector('.lbl').textContent = '旅程回憶 ♥'; }
+  }
+  setCd('cdTrip', daysUntil('2026-10-01'), '出發日！');
+  setCd('cdRace', daysUntil('2026-10-04'), '開跑日！');
+
+  /* ── 2. 今日高亮 ── */
+  (function(){
+    var today = new Date();
+    var iso = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+    var el = document.querySelector('.day[data-date="'+iso+'"]');
+    if(el){ el.classList.add('today'); }
+  })();
+
+  /* ── 3. 日卡點擊蓋完成印章（記憶） ── */
+  var days = document.querySelectorAll('.day');
+  days.forEach(function(d){
+    var key = 'spr_day_'+d.getAttribute('data-date');
+    if(localStorage.getItem(key)==='1'){ d.classList.add('cleared'); }
+    d.addEventListener('click', function(){
+      d.classList.toggle('cleared');
+      var on = d.classList.contains('cleared');
+      localStorage.setItem(key, on?'1':'0');
+      if(on){ d.classList.add('pop'); setTimeout(function(){d.classList.remove('pop');},400);
+        if(d.classList.contains('race')){ burst(28); } }
+    });
+  });
+
+  /* ── 4. checklist 記憶 ＋ 進度條 ＋ 全完成彩帶 ── */
+  var boxes = document.querySelectorAll('#checklist input[type=checkbox]');
+  var total = boxes.length;
+  function refresh(celebrate){
+    var done = 0;
+    boxes.forEach(function(b){ if(b.checked) done++; });
+    var pct = total? Math.round(done/total*100):0;
+    document.getElementById('progFill').style.width = pct+'%';
+    document.getElementById('progNum').textContent = done;
+    var e = document.getElementById('progEmoji');
+    if(done===0) e.textContent='🐿️ 一起加油！';
+    else if(done<total/2) e.textContent='🍂 好的開始！';
+    else if(done<total) e.textContent='🔥 快完成了！';
+    else { e.textContent='🎉 全部就緒，出發！'; if(celebrate) burst(60); }
+  }
+  boxes.forEach(function(b,i){
+    var key='spr_chk_'+i;
+    if(localStorage.getItem(key)==='1'){ b.checked=true; b.parentElement.classList.add('done'); }
+    b.addEventListener('change', function(){
+      localStorage.setItem(key, b.checked?'1':'0');
+      b.parentElement.classList.toggle('done', b.checked);
+      refresh(true);
+    });
+  });
+  refresh(false);
+
+  /* ── 5. 回到頂部 ── */
+  var topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', function(){
+    topBtn.classList.toggle('show', window.scrollY>400);
+  });
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  /* ── 6. 彩帶 ── */
+  function burst(n){
+    if(reduce) return;
+    var emo=['🎉','🍁','✨','🏅','🌸','🎊','❄️'];
+    for(var i=0;i<n;i++){
+      (function(){
+        var s=document.createElement('div');
+        s.className='confetti';
+        s.textContent=emo[Math.floor((i*7+3)%emo.length)];
+        s.style.left=((i*9+5)%100)+'%';
+        var dur=2+ (i%5)*0.5;
+        s.style.animationDuration=dur+'s';
+        s.style.fontSize=(14+(i%4)*5)+'px';
+        document.body.appendChild(s);
+        setTimeout(function(){ s.remove(); }, dur*1000+200);
+      })();
+    }
+  }
+
+  /* ── 7. 背景紅葉/雪花飄落 ── */
+  if(!reduce){
+    var cv=document.getElementById('leaves'), ctx=cv.getContext('2d');
+    var W,H,parts=[];
+    var glyphs=['🍁','🍂','🌸','❄️'];
+    function resize(){ W=cv.width=window.innerWidth; H=cv.height=window.innerHeight; }
+    resize(); window.addEventListener('resize',resize);
+    var N=Math.min(18, Math.floor(W/55));
+    for(var i=0;i<N;i++){
+      parts.push({
+        x:Math.random()*W, y:Math.random()*H,
+        s:14+Math.random()*12, v:0.3+Math.random()*0.7,
+        sway:Math.random()*Math.PI*2, sw:0.005+Math.random()*0.01,
+        amp:8+Math.random()*16, rot:Math.random()*Math.PI*2, vr:(Math.random()-0.5)*0.02,
+        g:glyphs[i%glyphs.length]
+      });
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      ctx.globalAlpha=0.55;
+      parts.forEach(function(p){
+        p.y+=p.v; p.sway+=p.sw; p.rot+=p.vr;
+        var dx=Math.sin(p.sway)*p.amp;
+        if(p.y>H+20){ p.y=-20; p.x=Math.random()*W; }
+        ctx.save();
+        ctx.translate(p.x+dx,p.y); ctx.rotate(p.rot);
+        ctx.font=p.s+'px serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText(p.g,0,0);
+        ctx.restore();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+})();
+</script>
+</body>
+</html>

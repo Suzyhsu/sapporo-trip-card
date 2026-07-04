@@ -104,6 +104,19 @@
   .trow.hi .tm{color:var(--momiji-dark);}
   .dtl-day.today{border:2px solid var(--leaf);box-shadow:0 0 0 4px #f0e4c4;position:relative;}
   .dtl-day.today::after{content:"今日";position:absolute;top:-9px;left:16px;background:var(--leaf);color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:999px;z-index:2;}
+  .dtl-head.tap{cursor:pointer;}
+  .dtl-head .chev{margin-left:8px;color:var(--soft);font-size:15px;transition:transform .25s;flex:0 0 auto;}
+  .dtl-day.race .dtl-head .chev{color:#fff;}
+  .dtl-day.open .dtl-head .chev{transform:rotate(90deg);}
+  .dtl-head.tap .ti{margin-left:auto;}
+  .more-hint{font-size:11px;color:var(--sky);padding:2px 16px 8px;}
+  .dtl-day.race .more-hint{color:#ffe;}
+  .dtl-extra{display:none;padding:12px 16px 15px;border-top:1px dashed var(--line);background:linear-gradient(180deg,var(--cream),#fff);}
+  .dtl-day.open .dtl-extra{display:block;animation:fadein .3s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .dtl-extra .route,.dtl-extra .box{box-shadow:none;margin-bottom:10px;border:1px solid var(--line);}
+  .dtl-extra .route-h,.dtl-extra .box-h{font-size:13px;}
+  .dtl-extra > .ex-h{font-size:12.5px;font-weight:700;color:var(--momiji-dark);margin:2px 0 8px;}
 
   /* ── 重點盒 ── */
   .box{
@@ -284,7 +297,7 @@
     <div class="sec-h"><span class="dot"></span>📅 每日行程（時間・集合・吃飯・交通）</div>
 
       <div class="dtl-day" data-date="2026-10-01">
-        <div class="dtl-head"><span class="d">10/1</span><span class="w">四</span><span class="ti">🛬 抵達 ＋ 領號碼布</span></div>
+        <div class="dtl-head tap"><span class="d">10/1</span><span class="w">四</span><span class="ti">🛬 抵達 ＋ 領號碼布</span><span class="chev">›</span></div>
         <div class="trow hi"><div class="tm">08:00</div><div class="tx">🤝 <b>機場 EVA 長榮櫃檯與爸媽會合</b>，一起報到託運＋過安檢（帶護照、RUNNET 確認信）</div></div>
         <div class="trow"><div class="tm">15:00</div><div class="tx">抵達新千歲空港（BR116）→ 入境提行李約 1 小時</div></div>
         <div class="trow"><div class="tm">~16:00</div><div class="tx">JR 快速エアポート（36–43分・1,230円）→ 札幌駅轉東豐線（往福住・約7分・210円）→ 豐水すすきの駅徒步4分</div></div>
@@ -292,16 +305,68 @@
         <div class="trow hi"><div class="tm">~18:10</div><div class="tx"><b>Sports Depo 光星店 領四人號碼布＋T恤</b>（10:00–21:00・四人本人到場帶護照）</div></div>
         <div class="trow"><div class="tm">~19:30</div><div class="tx">晚餐 <b>でめきん別邸</b>（二條市場・07:00–22:00・清淡海鮮定食・建議先訂）</div></div>
         <div class="trow"><div class="tm">~21:00</div><div class="tx">回飯店泡湯、早睡</div></div>
+        <div class="more-hint">👆 點標題看「機場 → 飯店」詳細交通</div>
+        <div class="dtl-extra">
+          <div class="ex-h">🛬 機場 → 飯店（新千歳空港 → 暖雪 札幌）</div>
+          <div class="route">
+            <div class="route-h">🚆 方案① JR：最快最省（推薦・約 50–60 分）</div>
+            <div class="stops">
+              <div class="stop start">
+                <div class="node"><div class="circle"></div><div class="bar"></div></div>
+                <div class="txt"><div class="name">新千歳空港駅</div><span class="leg train">JR快速エアポート・36–43分・1,230円</span><div class="desc">空港地下直結；想坐穩可加 uシート +840円（有大行李區）</div></div>
+              </div>
+              <div class="stop">
+                <div class="node"><div class="circle"></div><div class="bar"></div></div>
+                <div class="txt"><div class="name">札幌駅</div><span class="leg walk">站內轉乘</span> <span class="leg train">地下鐵東豐線・約7分・210円</span><div class="desc">轉「福住」方向</div></div>
+              </div>
+              <div class="stop end">
+                <div class="node"><div class="circle"></div></div>
+                <div class="txt"><div class="name">豐水すすきの駅 → 飯店徒步4分 🏨</div><div class="desc">合計約 ¥1,440／人・約 50–60 分</div></div>
+              </div>
+            </div>
+            <div class="opt">😌 <b>方案② 空港連絡巴士</b>（行李多、想輕鬆）：新千歳空港巴士站 → 直達「すすきの」，1,300–1,400円・約1小時強・<b>有座位＋行李托運</b>，不用拖行李轉車。長輩友善但較慢、易受路況影響。</div>
+          </div>
+        </div>
       </div>
 
       <div class="dtl-day" data-date="2026-10-02">
-        <div class="dtl-head"><span class="d">10/2</span><span class="w">五</span><span class="ti">🚃 小樽半日慢遊</span></div>
+        <div class="dtl-head tap"><span class="d">10/2</span><span class="w">五</span><span class="ti">🚃 小樽半日慢遊</span><span class="chev">›</span></div>
         <div class="trow"><div class="tm">~09:30</div><div class="tx">飯店 → 札幌駅 → JR 快速（~33分・800円）→ <b>南小樽駅</b>下車（有電梯）</div></div>
         <div class="trow hi"><div class="tm">~11:00</div><div class="tx"><b>水天宮</b>（徒步8–10分上坡）俯瞰小樽港＋<b>賽前祈願</b></div></div>
         <div class="trow"><div class="tm">11:30</div><div class="tx">下坡進堺町通 → <b>北一ホール</b>咖啡（167盞煤油燈大廳；排太久改隔壁 LeTAO）</div></div>
         <div class="trow hi"><div class="tm">12:00</div><div class="tx">午餐 <b>おたる政寿司 本店</b>（壽司百名店・座敷個室・無障礙・先訂 050-5868-2195）</div></div>
         <div class="trow"><div class="tm">13:30</div><div class="tx"><b>手宮線跡</b>（平坦鐵軌散步道）→ 小樽運河・淺草橋拍照</div></div>
         <div class="trow"><div class="tm">~15:00</div><div class="tx">小樽駅 → JR 回札幌 → 回飯店泡湯、輕鬆晚餐</div></div>
+        <div class="more-hint">👆 點標題看「小樽散步路線」（南小樽進，全程下坡）</div>
+        <div class="dtl-extra">
+          <div class="ex-h">🗺️ 小樽散步路線（南小樽進，全程下坡最省力）</div>
+          <div class="route">
+            <div class="route-h">🚃 札幌駅 → 南小樽（JR快速・約33分・800円）</div>
+            <div class="stops">
+              <div class="stop start">
+                <div class="node"><div class="circle"></div><div class="bar"></div></div>
+                <div class="txt"><div class="name">① 南小樽駅 → 水天宮</div><span class="leg walk">徒步8–10分・上坡</span><div class="desc">趁剛到體力好先上小山丘 <b>水天宮</b>俯瞰港景＋賽前祈願</div></div>
+              </div>
+              <div class="stop">
+                <div class="node"><div class="circle"></div><div class="bar"></div></div>
+                <div class="txt"><div class="name">② メルヘン交差點・北一ホール</div><span class="leg walk">下坡逛 堺町通</span><div class="desc">音樂盒堂、蒸氣鐘；<b>北一ホール</b>167盞煤油燈大廳咖啡（排太久改隔壁 LeTAO）</div></div>
+              </div>
+              <div class="stop">
+                <div class="node"><div class="circle"></div><div class="bar"></div></div>
+                <div class="txt"><div class="name">③ 午餐 政壽司本店</div><span class="leg walk">堺町通邊走邊吃</span><div class="desc">壽司百名店・座敷個室・無障礙（先訂）；北一硝子、かま栄炸物</div></div>
+              </div>
+              <div class="stop">
+                <div class="node"><div class="circle"></div><div class="bar"></div></div>
+                <div class="txt"><div class="name">④ 手宮線跡・小樽運河・淺草橋</div><span class="leg walk">徒步到小樽駅</span><div class="desc">廢線鐵軌散步道（平坦好拍）＋運河招牌打卡點</div></div>
+              </div>
+              <div class="stop end">
+                <div class="node"><div class="circle"></div></div>
+                <div class="txt"><div class="name">⑤ 小樽駅 → JR 回札幌 🏨</div><div class="desc">末班約 23:08；兩站皆有電梯＋置物櫃</div></div>
+              </div>
+            </div>
+            <div class="opt">💡 <b>為什麼南小樽進？</b> 南小樽地勢高，往運河方向是<b>連續下坡</b>，長輩走起來最省力；逛完從平地的小樽駅搭車回程。反方向則要爬坡。</div>
+          </div>
+        </div>
       </div>
 
       <div class="dtl-day" data-date="2026-10-03">
@@ -328,12 +393,35 @@
       </div>
 
       <div class="dtl-day" data-date="2026-10-05">
-        <div class="dtl-head"><span class="d">10/5</span><span class="w">一</span><span class="ti">🍜 賽後恢復日</span></div>
+        <div class="dtl-head tap"><span class="d">10/5</span><span class="w">一</span><span class="ti">🍜 賽後恢復日</span><span class="chev">›</span></div>
         <div class="trow"><div class="tm">自然醒</div><div class="tx">睡飽最重要；想吃海鮮可先去二條市場輕食</div></div>
         <div class="trow hi"><div class="tm">11:00</div><div class="tx"><b>🍛 湯咖哩 Suage+</b>（すすきの2分・湯咖哩百名店・辣度可調・沙發席）</div></div>
         <div class="trow"><div class="tm">12:30</div><div class="tx">回飯店小睡/大通散步，讓身體恢復</div></div>
         <div class="trow hi"><div class="tm">~16:15</div><div class="tx"><b>藻岩山</b>（市電→免費接駁→纜車套票往復2,100円）<b>上山接日落→夜景</b></div></div>
         <div class="trow hi"><div class="tm">~19:30</div><div class="tx"><b>🦀 かに将軍 札幌本店</b> 慶功大餐（座敷個室・すすきの2分・先訂 011-222-2588）</div></div>
+        <div class="more-hint">👆 點標題看「藻岩山纜車」與「餐廳清單」</div>
+        <div class="dtl-extra">
+          <div class="box tip">
+            <div class="box-h">🚠 藻岩山纜車 ・ 營業時間 ＆ 重點</div>
+            <ul>
+              <li><b>夏期（4–11月）10:30–22:00</b>，上行末班 21:30；<b class="hl">週一正常營業</b>（僅惡天候／檢修停運）</li>
+              <li>纜車＋ミニケーブルカー <b>套票往復 大人 2,100円</b>（持身障手冊半價）</li>
+              <li>札幌 10 月中旬<b>日落約 17:00</b>，<b class="hl">16:15 上山</b>可一次收進夕陽＋華燈＋夜景</li>
+              <li>山頂為「日本新三大夜景」之一，展望餐廳「ザ・ジュエルズ」晚餐 17:00–21:00（可山上直接吃）</li>
+              <li>路線：市電（環狀線）→「ロープウェイ入口」站 → <b>免費接駁巴士</b> → 山麓駅 → 纜車 → もーりすカー登頂（<b>全程無障礙、長輩友善</b>）</li>
+            </ul>
+          </div>
+          <div class="box">
+            <div class="box-h">🍽️ 餐廳（湯咖哩午餐＋慶功晚餐）</div>
+            <ul>
+              <li>🍛 <b>Suage+</b>（午餐）— 湯咖哩百名店・すすきの2分・辣度可調・沙發席（不可訂）</li>
+              <li>🦀 <b>かに将軍 札幌本店</b>（晚餐首選）— 帝王蟹會席・座敷個室・すすきの2分・011-222-2588</li>
+              <li><b>かに本家</b> — 同級蟹會席備選・座敷有椅適合長輩</li>
+              <li><b>じゃんごー</b> — 成吉思汗吃到飽 3,480円起・無休・12:00–24:00</li>
+            </ul>
+            <div style="font-size:12px;color:var(--momiji-dark);margin-top:8px;">⚠️ 蟹會席假日易滿，<b>出發前 1–2 週先訂 10/5 晚餐</b>（政壽司 10/2 午餐也要先訂）</div>
+          </div>
+        </div>
       </div>
 
       <div class="dtl-day" data-date="2026-10-06">
@@ -345,89 +433,6 @@
         <div class="trow hi"><div class="tm">16:15</div><div class="tx">🛫 BR115 起飛回台北</div></div>
       </div>
 
-  </div>
-
-  <!-- 機場到飯店 -->
-  <div class="sec">
-    <div class="sec-h"><span class="dot"></span>🛬 機場 → 飯店（10/1 抵達）</div>
-    <div class="route">
-      <div class="route-h">🚆 方案① JR：最快最省（推薦・約 50–60 分）</div>
-      <div class="stops">
-        <div class="stop start">
-          <div class="node"><div class="circle"></div><div class="bar"></div></div>
-          <div class="txt"><div class="name">新千歳空港駅</div><span class="leg train">JR快速エアポート・36–43分・1,230円</span><div class="desc">空港地下直結；想坐穩可加 uシート +840円（有大行李區）</div></div>
-        </div>
-        <div class="stop">
-          <div class="node"><div class="circle"></div><div class="bar"></div></div>
-          <div class="txt"><div class="name">札幌駅</div><span class="leg walk">站內轉乘</span> <span class="leg train">地下鐵東豐線・約7分・210円</span><div class="desc">轉「福住」方向</div></div>
-        </div>
-        <div class="stop end">
-          <div class="node"><div class="circle"></div></div>
-          <div class="txt"><div class="name">豐水すすきの駅 → 飯店徒步4分 🏨</div><div class="desc">合計約 ¥1,440／人・約 50–60 分</div></div>
-        </div>
-      </div>
-      <div class="opt">😌 <b>方案② 空港連絡巴士</b>（行李多、想輕鬆）：新千歳空港巴士站 → 直達「すすきの」，1,300–1,400円・約1小時強・<b>有座位＋行李托運</b>，不用拖行李轉車。長輩友善但較慢、易受路況影響。</div>
-    </div>
-  </div>
-
-  <!-- 小樽散步地圖 -->
-  <div class="sec">
-    <div class="sec-h"><span class="dot"></span>🗺️ 小樽散步路線（10/2・南小樽進，全程下坡）</div>
-    <div class="route">
-      <div class="route-h">🚃 札幌駅 → 南小樽（JR快速・約33分・800円）</div>
-      <div class="stops">
-        <div class="stop start">
-          <div class="node"><div class="circle"></div><div class="bar"></div></div>
-          <div class="txt"><div class="name">① 南小樽駅 → 水天宮</div><span class="leg walk">徒步8–10分・上坡</span><div class="desc">趁剛到體力好先上小山丘 <b>水天宮</b>俯瞰港景＋賽前祈願</div></div>
-        </div>
-        <div class="stop">
-          <div class="node"><div class="circle"></div><div class="bar"></div></div>
-          <div class="txt"><div class="name">② メルヘン交差點・北一ホール</div><span class="leg walk">下坡逛 堺町通</span><div class="desc">音樂盒堂、蒸氣鐘；<b>北一ホール</b>167盞煤油燈大廳咖啡（排太久改隔壁 LeTAO）</div></div>
-        </div>
-        <div class="stop">
-          <div class="node"><div class="circle"></div><div class="bar"></div></div>
-          <div class="txt"><div class="name">③ 午餐 政壽司本店</div><span class="leg walk">堺町通邊走邊吃</span><div class="desc">壽司百名店・座敷個室・無障礙（先訂）；北一硝子、かま栄炸物</div></div>
-        </div>
-        <div class="stop">
-          <div class="node"><div class="circle"></div><div class="bar"></div></div>
-          <div class="txt"><div class="name">④ 手宮線跡・小樽運河・淺草橋</div><span class="leg walk">徒步到小樽駅</span><div class="desc">廢線鐵軌散步道（平坦好拍）＋運河招牌打卡點</div></div>
-        </div>
-        <div class="stop end">
-          <div class="node"><div class="circle"></div></div>
-          <div class="txt"><div class="name">⑤ 小樽駅 → JR 回札幌 🏨</div><div class="desc">末班約 23:08；兩站皆有電梯＋置物櫃</div></div>
-        </div>
-      </div>
-      <div class="opt">💡 <b>為什麼南小樽進？</b> 南小樽地勢高，往運河方向是<b>連續下坡</b>，長輩走起來最省力；逛完從平地的小樽駅搭車回程。反方向則要爬坡。</div>
-    </div>
-  </div>
-
-  <!-- 藻岩山 -->
-  <div class="sec">
-    <div class="sec-h"><span class="dot"></span>🚠 藻岩山纜車（10/5 賽後恢復日）</div>
-    <div class="box tip">
-      <div class="box-h">🍁 營業時間 ＆ 重點</div>
-      <ul>
-        <li><b>夏期（4–11月）10:30–22:00</b>，上行末班 21:30；<b class="hl">週一正常營業</b>（僅惡天候／檢修停運）</li>
-        <li>纜車＋ミニケーブルカー <b>套票往復 大人 2,100円</b>（持身障手冊半價）</li>
-        <li>札幌 10 月中旬<b>日落約 17:00</b>，<b class="hl">16:15 上山</b>可一次收進夕陽＋華燈＋夜景</li>
-        <li>山頂為「日本新三大夜景」之一，展望餐廳「ザ・ジュエルズ」晚餐 17:00–21:00（可山上直接吃）</li>
-        <li>路線：市電（環狀線）→「ロープウェイ入口」站 → <b>免費接駁巴士</b> → 山麓駅 → 纜車 → もーりすカー登頂（<b>全程無障礙、長輩友善</b>）</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 慶功餐廳 -->
-  <div class="sec">
-    <div class="sec-h"><span class="dot"></span>🍽️ 10/5 餐廳（湯咖哩午餐＋慶功晚餐）</div>
-    <div class="box">
-      <ul>
-        <li>🍛 <b>Suage+</b>（午餐）— 湯咖哩百名店・すすきの2分・辣度可調・沙發席（不可訂）</li>
-        <li>🦀 <b>かに将軍 札幌本店</b>（晚餐首選）— 帝王蟹會席・座敷個室・すすきの2分・011-222-2588</li>
-        <li><b>かに本家</b> — 同級蟹會席備選・座敷有椅適合長輩</li>
-        <li><b>じゃんごー</b> — 成吉思汗吃到飽 3,480円起・無休・12:00–24:00</li>
-      </ul>
-      <div style="font-size:12px;color:var(--momiji-dark);margin-top:8px;">⚠️ 蟹會席假日易滿，<b>出發前 1–2 週先訂 10/5 晚餐</b>（政壽司 10/2 午餐也要先訂）</div>
-    </div>
   </div>
 
   <!-- 重要連絡 -->
@@ -499,6 +504,15 @@
     var iso = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
     var el = document.querySelector('.dtl-day[data-date="'+iso+'"]');
     if(el){ el.classList.add('today'); }
+  })();
+
+  /* ── 2b. 點日卡標題展開細節 ── */
+  (function(){
+    document.querySelectorAll('.dtl-head.tap').forEach(function(h){
+      h.addEventListener('click', function(){
+        h.closest('.dtl-day').classList.toggle('open');
+      });
+    });
   })();
 
   /* ── 4. checklist 記憶 ＋ 進度條 ＋ 全完成彩帶 ── */

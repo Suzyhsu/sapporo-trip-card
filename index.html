@@ -87,6 +87,34 @@
   .day.race .date-badge{background:var(--momiji);border-color:var(--momiji);}
   .day.race .date-badge .d,.day.race .date-badge .w{color:#fff;}
 
+  /* ── 分頁 tabs ── */
+  .tabs{display:flex;gap:8px;margin:0 4px 14px;}
+  .tab-btn{
+    flex:1;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;
+    background:var(--card);border:1.5px solid var(--line);border-radius:14px;
+    padding:9px 12px;color:var(--soft);transition:all .2s;
+  }
+  .tab-btn.active{background:linear-gradient(160deg,var(--momiji),var(--momiji-dark));color:#fff;border-color:var(--momiji);box-shadow:var(--shadow);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;animation:fadein .3s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  /* ── 詳細行程 ── */
+  .dtl-day{background:var(--card);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);margin-bottom:13px;overflow:hidden;}
+  .dtl-head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(160deg,#fff,var(--cream));border-bottom:1px solid var(--line);}
+  .dtl-head .d{font-size:17px;font-weight:900;color:var(--momiji-dark);}
+  .dtl-head .w{font-size:12px;color:var(--soft);}
+  .dtl-head .ti{font-size:13.5px;font-weight:700;margin-left:auto;text-align:right;}
+  .dtl-day.race .dtl-head{background:var(--momiji);}
+  .dtl-day.race .dtl-head .d,.dtl-day.race .dtl-head .w,.dtl-day.race .dtl-head .ti{color:#fff;}
+  .trow{display:flex;gap:11px;padding:9px 16px;border-bottom:1px dashed var(--line);}
+  .trow:last-child{border-bottom:none;}
+  .trow .tm{flex:0 0 60px;font-size:12px;font-weight:700;color:var(--sky);}
+  .trow .tx{font-size:13px;color:#5d514a;flex:1;}
+  .trow .tx b{color:var(--ink);}
+  .trow.hi{background:linear-gradient(90deg,#fff6ef,transparent);}
+  .trow.hi .tm{color:var(--momiji-dark);}
+
   /* ── 重點盒 ── */
   .box{
     border-radius:18px;padding:15px 17px;margin-bottom:13px;box-shadow:var(--shadow);
@@ -252,36 +280,24 @@
       <ul>
         <li><b class="hl">自助給水制</b>：半馬與10km <b>必須自備 My Bottle／My Cup 才能出賽</b>！</li>
         <li>起跑點在 <b>「真駒内五輪通・五輪小橋附近」</b>（不在體育場內，依指標到整列區）</li>
-        <li>寄物需 <b>事前申請 +400円</b>（當日 500円）＋自備寄物袋</li>
-      </ul>
-    </div>
-    <div class="box warn">
-      <div class="box-h">🚆 當天動線（⚠️ 不能叫計程車直達會場！）</div>
-      <ul>
-        <li><b class="hl">約 7:00 出門</b>：飯店步行 → すすきの駅</li>
-        <li>南北線直達 <b>真駒内駅</b>（終點・約17分・免轉車）</li>
-        <li>真駒内駅 <b>10番のりば</b>轉 <b>大會接駁巴士</b> → 「真駒内競技場前」（240円・約7分）</li>
-        <li><b class="hl">乗継只能刷 IC 卡、不收現金</b>，也不能用一日券；接駁滿車即發、回程 10:30–14:30</li>
+        <li><b class="hl">不能叫計程車直達會場</b>；接駁乗継只收 IC 卡、不收現金</li>
       </ul>
     </div>
     <div class="info-grid">
       <div class="info"><div class="lab">爸爸 10K</div><div class="val">9:00 起跑</div><div class="sub">五輪通起跑・80分關門</div></div>
       <div class="info"><div class="lab">媽媽・我・先生 半馬21K</div><div class="val">9:30 起跑</div><div class="sub">五輪通起跑・10km關門10:50</div></div>
     </div>
-    <div class="box tip" style="margin-top:13px;">
-      <div class="box-h">💡 賽後</div>
-      <ul>
-        <li>全家會合 → 接駁回飯店 <b>泡暖雪溫泉</b> 放鬆肌肉</li>
-        <li>省事選項：<b>讀賣シャトルバス</b> 真駒内直達札幌駅/大通/すすきの（WEB預約+刷卡）</li>
-        <li>當天吃清淡（でめきん別邸/うどん），<b>慶功大餐排 10/5</b> 最理想</li>
-      </ul>
-    </div>
   </div>
 
   <!-- 每日行程 -->
   <div class="sec">
-    <div class="sec-h"><span class="dot"></span>📅 每日行程（推薦版 A）</div>
+    <div class="sec-h"><span class="dot"></span>📅 每日行程</div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="overview">總覽</button>
+      <button class="tab-btn" data-tab="detail">詳細行程</button>
+    </div>
 
+    <div class="tab-panel active" id="tab-overview">
     <div class="day" data-date="2026-10-01">
       <div class="day-top">
         <div class="date-badge"><div class="d">10/1</div><div class="w">四 Thu</div></div>
@@ -335,6 +351,73 @@
       <div class="day-body"><b>11:00 前退房</b>寄行李 → 狸小路／大通採買 → <span class="t">最晚 13:00</span> 出發（JR快速約60–75分）→ 新千歲<b>國際線</b>航廈 → BR115 16:15（報到櫃檯~15:15關）</div>
       <div class="stamp">✓ 完成！</div>
     </div>
+    </div><!-- /tab-overview -->
+
+    <div class="tab-panel" id="tab-detail">
+
+      <div class="dtl-day">
+        <div class="dtl-head"><span class="d">10/1</span><span class="w">四</span><span class="ti">🛬 抵達 ＋ 領號碼布</span></div>
+        <div class="trow hi"><div class="tm">08:00</div><div class="tx">🤝 <b>機場 EVA 長榮櫃檯與爸媽會合</b>，一起報到託運＋過安檢（帶護照、RUNNET 確認信）</div></div>
+        <div class="trow"><div class="tm">15:00</div><div class="tx">抵達新千歲空港（BR116）→ 入境提行李約 1 小時</div></div>
+        <div class="trow"><div class="tm">~16:00</div><div class="tx">JR 快速エアポート（36–43分・1,230円）→ 札幌駅轉東豐線（往福住・約7分・210円）→ 豐水すすきの駅徒步4分</div></div>
+        <div class="trow"><div class="tm">~17:00</div><div class="tx">入住 <b>DANSETSU SAPPORO</b>，放行李、換輕便衣物</div></div>
+        <div class="trow hi"><div class="tm">~18:10</div><div class="tx"><b>Sports Depo 光星店 領四人號碼布＋T恤</b>（10:00–21:00・四人本人到場帶護照）</div></div>
+        <div class="trow"><div class="tm">~19:30</div><div class="tx">晚餐 <b>でめきん別邸</b>（二條市場・07:00–22:00・清淡海鮮定食・建議先訂）</div></div>
+        <div class="trow"><div class="tm">~21:00</div><div class="tx">回飯店泡湯、早睡</div></div>
+      </div>
+
+      <div class="dtl-day">
+        <div class="dtl-head"><span class="d">10/2</span><span class="w">五</span><span class="ti">🚃 小樽半日慢遊</span></div>
+        <div class="trow"><div class="tm">~09:30</div><div class="tx">飯店 → 札幌駅 → JR 快速（~33分・800円）→ <b>南小樽駅</b>下車（有電梯）</div></div>
+        <div class="trow hi"><div class="tm">~11:00</div><div class="tx"><b>水天宮</b>（徒步8–10分上坡）俯瞰小樽港＋<b>賽前祈願</b></div></div>
+        <div class="trow"><div class="tm">11:30</div><div class="tx">下坡進堺町通 → <b>北一ホール</b>咖啡（167盞煤油燈大廳；排太久改隔壁 LeTAO）</div></div>
+        <div class="trow hi"><div class="tm">12:00</div><div class="tx">午餐 <b>おたる政寿司 本店</b>（壽司百名店・座敷個室・無障礙・先訂 050-5868-2195）</div></div>
+        <div class="trow"><div class="tm">13:30</div><div class="tx"><b>手宮線跡</b>（平坦鐵軌散步道）→ 小樽運河・淺草橋拍照</div></div>
+        <div class="trow"><div class="tm">~15:00</div><div class="tx">小樽駅 → JR 回札幌 → 回飯店泡湯、輕鬆晚餐</div></div>
+      </div>
+
+      <div class="dtl-day">
+        <div class="dtl-head"><span class="d">10/3</span><span class="w">六</span><span class="ti">🗿 賽前場勘 ＋ 頭大仏</span></div>
+        <div class="trow"><div class="tm">~09:30</div><div class="tx">すすきの → 南北線直達真駒内駅（<b>走一次比賽日相同路線</b>）；確認 10 番のりば接駁乘車處</div></div>
+        <div class="trow hi"><div class="tm">10:00</div><div class="tx"><b>場勘：真駒内公園＋起跑點（五輪通）</b>——看整列/廁所/寄物位置＋紅葉散步（跑者適可而止別繞遠）</div></div>
+        <div class="trow"><div class="tm">~11:10</div><div class="tx">真駒内駅 ②番のりば → <b>中央巴士 真108便</b>（約20–25分・500円）</div></div>
+        <div class="trow hi"><div class="tm">11:40</div><div class="tx"><b>🗿 頭大仏＋摩艾像</b>（安藤忠雄・拝觀9:00–16:00・1,000円/人）</div></div>
+        <div class="trow"><div class="tm">13:30</div><div class="tx">回市區 <b>碳水午餐</b>（うどんのそうまや/YS↑O2・好消化）</div></div>
+        <div class="trow"><div class="tm">~18:00</div><div class="tx"><b>碳水晚餐、提早吃</b>（低纖碳水＋瘦蛋白，別油辣、不嘗新）</div></div>
+        <div class="trow hi"><div class="tm">21:00</div><div class="tx">提早就寢；擺好裝備＋<b>My Bottle</b>，明早6:00起床</div></div>
+      </div>
+
+      <div class="dtl-day race">
+        <div class="dtl-head"><span class="d">10/4</span><span class="w">日</span><span class="ti">🏅 札幌馬拉松</span></div>
+        <div class="trow hi"><div class="tm">~06:00</div><div class="tx">起床、賽前早餐（白飯糰/香蕉+運動飲料）；別忘號碼布＋晶片＋<b>My Bottle</b></div></div>
+        <div class="trow"><div class="tm">~07:00</div><div class="tx">出門 → すすきの駅 → 南北線直達真駒内駅（約17分）</div></div>
+        <div class="trow"><div class="tm">~07:30</div><div class="tx">真駒内駅 10番のりば → 接駁巴士到「真駒内競技場前」（240円・乗継只收IC）</div></div>
+        <div class="trow"><div class="tm">~08:30</div><div class="tx">寄物、上廁所、依指標到 <b>五輪通</b>整列區、動態熱身</div></div>
+        <div class="trow hi"><div class="tm">09:00</div><div class="tx">🏃 爸爸 10km 起跑</div></div>
+        <div class="trow hi"><div class="tm">09:30</div><div class="tx">🏃 半馬三人起跑（媽媽・你・先生）</div></div>
+        <div class="trow"><div class="tm">~12:30</div><div class="tx">全家會合、換保暖乾衣 → 接駁/讀賣シャトルバス回飯店 <b>泡溫泉</b></div></div>
+        <div class="trow"><div class="tm">~18:00</div><div class="tx">清淡慶功晚餐（大餐留 10/5）</div></div>
+      </div>
+
+      <div class="dtl-day">
+        <div class="dtl-head"><span class="d">10/5</span><span class="w">一</span><span class="ti">🍜 賽後恢復日</span></div>
+        <div class="trow"><div class="tm">自然醒</div><div class="tx">睡飽最重要；想吃海鮮可先去二條市場輕食</div></div>
+        <div class="trow hi"><div class="tm">11:00</div><div class="tx"><b>🍛 湯咖哩 Suage+</b>（すすきの2分・湯咖哩百名店・辣度可調・沙發席）</div></div>
+        <div class="trow"><div class="tm">12:30</div><div class="tx">回飯店小睡/大通散步，讓身體恢復</div></div>
+        <div class="trow hi"><div class="tm">~16:15</div><div class="tx"><b>藻岩山</b>（市電→免費接駁→纜車套票往復2,100円）<b>上山接日落→夜景</b></div></div>
+        <div class="trow hi"><div class="tm">~19:30</div><div class="tx"><b>🦀 かに将軍 札幌本店</b> 慶功大餐（座敷個室・すすきの2分・先訂 011-222-2588）</div></div>
+      </div>
+
+      <div class="dtl-day">
+        <div class="dtl-head"><span class="d">10/6</span><span class="w">二</span><span class="ti">🎁 採買 ＋ 回程</span></div>
+        <div class="trow"><div class="tm">~09:00</div><div class="tx">EVA 線上報到（可選）；狸小路/大通採買伴手禮</div></div>
+        <div class="trow hi"><div class="tm">11:00前</div><div class="tx"><b>退房＋寄行李</b></div></div>
+        <div class="trow hi"><div class="tm">最晚13:00</div><div class="tx">取行李出發 → JR 快速エアポート（門到門約60–75分）→ 新千歲<b>國際線</b>航廈</div></div>
+        <div class="trow"><div class="tm">~15:15</div><div class="tx">⚠️ 報到櫃檯關閉（起飛前1小時）；務必在此前完成報到託運</div></div>
+        <div class="trow hi"><div class="tm">16:15</div><div class="tx">🛫 BR115 起飛回台北</div></div>
+      </div>
+
+    </div><!-- /tab-detail -->
   </div>
 
   <!-- 機場到飯店 -->
@@ -482,6 +565,20 @@
   }
   setCd('cdTrip', daysUntil('2026-10-01'), '出發日！');
   setCd('cdRace', daysUntil('2026-10-04'), '開跑日！');
+
+  /* ── 1b. 行程分頁切換 ── */
+  (function(){
+    var btns = document.querySelectorAll('.tab-btn');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var tab = b.getAttribute('data-tab');
+        btns.forEach(function(x){ x.classList.toggle('active', x===b); });
+        document.querySelectorAll('.tab-panel').forEach(function(p){
+          p.classList.toggle('active', p.id==='tab-'+tab);
+        });
+      });
+    });
+  })();
 
   /* ── 2. 今日高亮 ── */
   (function(){

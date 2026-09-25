@@ -3,931 +3,691 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>札幌跑旅行前小卡</title>
+<title>札幌跑旅行前小卡 🏃‍♀️🍁</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fcf8f3;
-    --paper:#fffdf9;
+    --snow:#fdfaf6;
+    --cream:#fff7ee;
+    --ink:#4a3f3a;
+    --soft:#8a7a70;
+    --momiji:#e0633f;
+    --momiji-dark:#c14a2c;
+    --sakura:#f4c4c0;
+    --leaf:#c8893f;
+    --sky:#7fa9c4;
+    --line:#efe2d4;
     --card:#ffffff;
-    --ink:#3f3834;
-    --muted:#776a61;
-    --line:#eadfd1;
-    --accent:#c45b36;
-    --accent-soft:#f8ebe4;
-    --gold:#b89043;
-    --green:#6f9164;
-    --blue:#5d87a9;
-    --shadow:0 12px 28px rgba(106,78,58,.08);
-    --radius:22px;
+    --shadow:0 6px 22px rgba(120,80,60,.10);
   }
 
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    font-family:"Noto Sans TC","Zen Maru Gothic","Microsoft JhengHei",sans-serif;
-    color:var(--ink);
+    font-family:'Zen Maru Gothic','Noto Sans TC','Kosugi Maru','Microsoft JhengHei',sans-serif;
     background:
-      radial-gradient(circle at top left, #fff0e6 0, transparent 32%),
-      linear-gradient(180deg, #fffdfa 0%, var(--bg) 100%);
-    line-height:1.65;
+      radial-gradient(circle at 12% 8%, #fff1e6 0, transparent 32%),
+      radial-gradient(circle at 88% 4%, #fdeceb 0, transparent 30%),
+      var(--snow);
+    color:var(--ink);
+    line-height:1.7;
+    padding:22px 14px 60px;
     -webkit-font-smoothing:antialiased;
   }
-  a{color:var(--accent);text-decoration:none;}
-  .wrap{max-width:920px;margin:0 auto;padding:24px 16px 56px;}
+  .wrap{max-width:760px;margin:0 auto;position:relative;z-index:1;}
 
-  .hero{
-    background:linear-gradient(135deg, #fffdfb 0%, #fff5ed 100%);
-    border:1px solid var(--line);
-    border-radius:30px;
+  header{
+    text-align:center;
+    background:linear-gradient(135deg,#fff 0%,var(--cream) 100%);
+    border:2px dashed var(--sakura);
+    border-radius:26px;
+    padding:26px 22px 22px;
     box-shadow:var(--shadow);
-    padding:28px 24px 22px;
+    position:relative;
+    overflow:hidden;
   }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:7px 12px;
-    border-radius:999px;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.04em;
-  }
-  h1{
-    margin:14px 0 8px;
-    font-size:clamp(30px, 5vw, 42px);
-    line-height:1.15;
-    font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;
-    color:#5a3224;
-  }
-  .hero-sub{
-    margin:0;
-    color:var(--muted);
-    font-size:15px;
-  }
-  .hero-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:18px;
-  }
+  header::before{content:"🍁";position:absolute;top:12px;left:18px;font-size:26px;opacity:.7;transform:rotate(-18deg);}
+  header::after{content:"❄️";position:absolute;top:14px;right:18px;font-size:22px;opacity:.65;}
+  .ttl{font-size:27px;font-weight:900;letter-spacing:1px;color:var(--momiji-dark);}
+  .ttl small{display:block;font-size:13px;color:var(--soft);font-weight:500;letter-spacing:3px;margin-top:4px;}
+  .subttl{margin-top:10px;font-size:13px;color:#695b54;}
+  .meta{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
   .chip{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:8px 12px;
+    background:var(--snow);
+    border:1px solid var(--line);
     border-radius:999px;
-    background:#fff;
-    border:1px solid var(--line);
-    font-size:13px;
-    color:#514842;
+    padding:5px 13px;
+    font-size:12.5px;
+    color:var(--ink);
+    white-space:nowrap;
   }
-  .countdown{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:12px;
-    margin-top:18px;
-  }
-  .cd{
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:14px 16px;
-  }
-  .cd .num{
-    font-size:28px;
-    font-weight:900;
-    color:var(--accent);
-    line-height:1;
-  }
-  .cd .lbl{
-    margin-top:6px;
-    font-size:12px;
-    color:var(--muted);
-  }
+  .chip b{color:var(--momiji-dark);}
 
-  .nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin:18px 0 4px;
+  .countdown{margin-top:14px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .cd{
+    background:linear-gradient(160deg,#fff,var(--cream));
+    border:1.5px solid var(--sakura);
+    border-radius:16px;
+    padding:7px 15px;
+    text-align:center;
+    min-width:92px;
+    transition:transform .2s;
   }
-  .nav a{
-    padding:9px 14px;
-    border-radius:999px;
-    background:rgba(255,255,255,.82);
-    border:1px solid var(--line);
-    color:#5b4b40;
-    font-size:13px;
-    font-weight:700;
-  }
+  .cd:hover{transform:translateY(-3px) scale(1.04);}
+  .cd .num{font-size:24px;font-weight:900;color:var(--momiji-dark);line-height:1;}
+  .cd .lbl{font-size:10.5px;color:var(--soft);margin-top:3px;letter-spacing:.5px;}
+  .cd.go .num{color:var(--leaf);}
 
   .sec{margin-top:26px;}
-  .sec-head{
+  .sec-h{
     display:flex;
     align-items:center;
-    gap:10px;
-    margin-bottom:14px;
-  }
-  .sec-head .dot{
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    background:var(--accent);
-    box-shadow:0 0 0 5px rgba(196,91,54,.14);
-  }
-  .sec-head h2{
-    margin:0;
-    font-size:22px;
-    line-height:1.2;
-    color:#5a3224;
-  }
-  .sec-note{
-    margin:4px 0 0 22px;
-    color:var(--muted);
-    font-size:13px;
-  }
-
-  .grid{
-    display:grid;
-    gap:12px;
-  }
-  .grid-2{grid-template-columns:repeat(2, minmax(0, 1fr));}
-  .grid-4{grid-template-columns:repeat(4, minmax(0, 1fr));}
-
-  .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:18px;
-  }
-  .card h3{
-    margin:0 0 8px;
+    gap:9px;
     font-size:17px;
-    color:#5a3224;
-  }
-  .card p{
-    margin:0;
-    color:#584f49;
-    font-size:14px;
-  }
-
-  .race-grid .card{
-    padding:18px 18px 16px;
-  }
-  .label{
-    display:block;
-    margin-bottom:6px;
-    color:var(--accent);
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:.05em;
-  }
-  .mini-list{
-    list-style:none;
-    margin:10px 0 0;
-    padding:0;
-  }
-  .mini-list li{
-    padding:7px 0;
-    border-top:1px dashed #eee3d7;
-    font-size:14px;
-    color:#584f49;
-  }
-  .mini-list li:first-child{border-top:none;padding-top:0;}
-  .mini-list b{color:var(--ink);}
-
-  .weather{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:12px;
-  }
-  .weather .card strong{
-    display:block;
-    margin-top:6px;
-    font-size:24px;
-    color:var(--accent);
-  }
-
-  details.trip-day{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:24px;
-    box-shadow:var(--shadow);
-    overflow:hidden;
-    margin-bottom:14px;
-  }
-  details.trip-day[open]{
-    border-color:#dfccb8;
-  }
-  details.trip-day summary{
-    list-style:none;
-    cursor:pointer;
-    padding:18px 20px;
-    display:flex;
-    align-items:flex-start;
-    gap:14px;
-  }
-  details.trip-day summary::-webkit-details-marker{display:none;}
-  .date-badge{
-    flex:0 0 72px;
-    border-radius:18px;
-    background:linear-gradient(180deg, #fff7f0 0%, #fff2e6 100%);
-    border:1px solid #ead6c8;
-    text-align:center;
-    padding:10px 8px;
-  }
-  .date-badge .date{
-    display:block;
-    font-size:22px;
-    font-weight:900;
-    line-height:1;
-    color:#8b3f24;
-  }
-  .date-badge .week{
-    display:block;
-    margin-top:5px;
-    font-size:12px;
-    color:var(--muted);
-  }
-  .day-main{
-    flex:1;
-    min-width:0;
-  }
-  .day-top{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-  }
-  .day-top h3{
-    margin:0;
-    font-size:19px;
-    color:#4f3429;
-  }
-  .day-top .chev{
-    margin-left:auto;
-    font-size:22px;
-    color:#b08d74;
-    transition:transform .2s ease;
-  }
-  details.trip-day[open] .chev{transform:rotate(90deg);}
-  .day-summary{
-    margin-top:6px;
-    color:var(--muted);
-    font-size:14px;
-  }
-  .day-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:12px;
-  }
-  .tag{
-    display:inline-flex;
-    align-items:center;
-    padding:6px 10px;
-    border-radius:999px;
-    background:#f7f2ec;
-    color:#5c5047;
-    font-size:12px;
     font-weight:700;
+    color:var(--momiji-dark);
+    margin:0 4px 12px;
   }
-  .trip-body{
-    padding:0 20px 20px 20px;
+  .sec-h .dot{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--momiji);
+    box-shadow:0 0 0 4px #f7d6c6;
   }
-  .timeline{
-    list-style:none;
-    margin:0;
-    padding:0;
-    border-top:1px solid #f1e6db;
-  }
-  .timeline li{
-    display:grid;
-    grid-template-columns:88px 1fr;
-    gap:12px;
-    padding:13px 0;
-    border-bottom:1px dashed #eee3d7;
-  }
-  .timeline li:last-child{border-bottom:none;}
-  .time{
-    color:var(--blue);
-    font-size:13px;
-    font-weight:800;
-  }
-  .desc{
-    font-size:14px;
-    color:#564d46;
-  }
-  .desc b{color:var(--ink);}
-  .note-box{
-    margin-top:14px;
-    padding:14px 16px;
+  .sec-sub{font-size:12px;color:var(--soft);margin:0 4px 10px;}
+
+  .box{
     border-radius:18px;
-    background:#fbf6ef;
-    border:1px solid #efe2d0;
+    padding:15px 17px;
+    margin-bottom:13px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+    background:var(--card);
   }
-  .note-box h4{
-    margin:0 0 6px;
-    font-size:14px;
-    color:#7f532f;
-  }
-  .note-box p{
-    margin:0;
-    font-size:13px;
-    color:#675b53;
-  }
-  .trip-day.race{
-    border:1px solid #e1c7b5;
-    background:linear-gradient(180deg, #fffaf7 0%, #fff 100%);
-  }
-  .trip-day.race .date-badge{
-    background:linear-gradient(180deg, #d46a44 0%, #c15935 100%);
-    border-color:#c15935;
-  }
-  .trip-day.race .date-badge .date,
-  .trip-day.race .date-badge .week{
-    color:#fff;
-  }
-
-  .booking{
+  .box.warn{background:linear-gradient(180deg,#fff5f3,#fff);border:1.5px solid var(--sakura);}
+  .box.tip{background:linear-gradient(180deg,#fbf6ee,#fff);border:1.5px solid #ecd9bd;}
+  .box-h{
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--momiji-dark);
+    margin-bottom:8px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:12px;
+    gap:7px;
   }
-  .booking .status{
-    flex:0 0 auto;
-    padding:7px 11px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:800;
+  .box ul{list-style:none;}
+  .box li{
+    font-size:13px;
+    padding:4px 0 4px 20px;
+    position:relative;
+    color:#5d514a;
   }
-  .status.pending{background:#fff0eb;color:#9e4224;}
-  .status.done{background:#edf7eb;color:#41653c;}
+  .box li::before{content:"🔸";position:absolute;left:0;top:4px;font-size:10px;}
+  .box.warn li::before{content:"⚠️";font-size:11px;}
+  .box li b{color:var(--ink);}
+  .hl{background:linear-gradient(transparent 60%,#ffe1b8 60%);font-weight:700;}
 
-  .check-card{
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .info{
     background:var(--card);
     border:1px solid var(--line);
-    border-radius:24px;
+    border-radius:16px;
+    padding:12px 14px;
     box-shadow:var(--shadow);
-    padding:18px;
   }
-  .progress{
-    margin-bottom:14px;
-  }
-  .progress-bar{
-    height:12px;
-    background:#efe5d9;
-    border-radius:999px;
+  .info .lab{font-size:11.5px;color:var(--soft);}
+  .info .val{font-size:14px;font-weight:700;color:var(--ink);margin-top:2px;}
+  .info .sub{font-size:12px;color:#6e615a;margin-top:3px;}
+  .info a{color:var(--momiji-dark);text-decoration:none;}
+  .state{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:700;margin-bottom:6px;}
+  .state.pending{background:#fff0eb;color:var(--momiji-dark);}
+  .state.done{background:#eef6e7;color:#557247;}
+
+  .dtl-day{
+    background:var(--card);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+    margin-bottom:13px;
     overflow:hidden;
   }
-  .progress-fill{
-    height:100%;
-    width:0;
-    background:linear-gradient(90deg, var(--gold), var(--accent));
-    transition:width .35s ease;
+  .dtl-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 16px;
+    background:linear-gradient(160deg,#fff,var(--cream));
+    border-bottom:1px solid var(--line);
   }
-  .progress-text{
-    margin-top:7px;
-    font-size:13px;
-    color:var(--muted);
+  .dtl-head .d{font-size:17px;font-weight:900;color:var(--momiji-dark);}
+  .dtl-head .w{font-size:12px;color:var(--soft);}
+  .dtl-head .ti{font-size:13.5px;font-weight:700;margin-left:auto;text-align:right;}
+  .dtl-day.race .dtl-head{background:var(--momiji);}
+  .dtl-day.race .dtl-head .d,
+  .dtl-day.race .dtl-head .w,
+  .dtl-day.race .dtl-head .ti{color:#fff;}
+  .dtl-head.tap{cursor:pointer;}
+  .dtl-head .chev{margin-left:8px;color:var(--soft);font-size:15px;transition:transform .25s;flex:0 0 auto;}
+  .dtl-day.race .dtl-head .chev{color:#fff;}
+  .dtl-day.open .dtl-head .chev{transform:rotate(90deg);}
+  .trow{display:flex;gap:11px;padding:9px 16px;border-bottom:1px dashed var(--line);}
+  .trow:last-child{border-bottom:none;}
+  .trow .tm{flex:0 0 60px;font-size:12px;font-weight:700;color:var(--sky);}
+  .trow .tx{font-size:13px;color:#5d514a;flex:1;}
+  .trow .tx b{color:var(--ink);}
+  .trow.hi{background:linear-gradient(90deg,#fff6ef,transparent);}
+  .trow.hi .tm{color:var(--momiji-dark);}
+  .more-hint{font-size:11px;color:var(--sky);padding:2px 16px 8px;}
+  .dtl-extra{
+    display:none;
+    padding:12px 16px 15px;
+    border-top:1px dashed var(--line);
+    background:linear-gradient(180deg,var(--cream),#fff);
   }
-  .progress-text b{color:#7b3e25;}
-  .checklist{
-    display:grid;
-    gap:2px;
+  .dtl-day.open .dtl-extra{display:block;animation:fadein .3s ease;}
+  .dtl-day.today{border:2px solid var(--leaf);box-shadow:0 0 0 4px #f0e4c4;position:relative;}
+  .dtl-day.today::after{
+    content:"今日";
+    position:absolute;
+    top:-9px;
+    left:16px;
+    background:var(--leaf);
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    padding:2px 9px;
+    border-radius:999px;
+    z-index:2;
   }
-  .checklist label{
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .check{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:14px 18px;
+    box-shadow:var(--shadow);
+  }
+  .check label{
     display:flex;
     align-items:flex-start;
-    gap:10px;
-    padding:11px 0;
-    border-bottom:1px dashed #eee3d7;
-    color:#564d46;
-    font-size:14px;
+    gap:9px;
+    font-size:13px;
+    padding:6px 0;
+    color:#5d514a;
     cursor:pointer;
+    border-bottom:1px dashed var(--line);
+    transition:opacity .25s;
   }
-  .checklist label:last-child{border-bottom:none;}
-  .checklist input{
-    margin-top:3px;
-    accent-color:var(--accent);
-    transform:scale(1.12);
-  }
-  .checklist .done{
-    opacity:.56;
-    text-decoration:line-through;
-    text-decoration-color:#dcb49e;
-  }
+  .check label:last-child{border-bottom:none;}
+  .check label.done{opacity:.55;text-decoration:line-through;text-decoration-color:var(--sakura);}
+  .check input{margin-top:4px;accent-color:var(--momiji);transform:scale(1.15);}
 
-  footer{
-    margin-top:28px;
-    text-align:center;
-    font-size:12px;
-    color:var(--muted);
-  }
+  .progress-wrap{margin:0 4px 12px;}
+  .progress-bar{height:14px;background:var(--line);border-radius:999px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.08);}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--leaf),var(--momiji));border-radius:999px;transition:width .6s cubic-bezier(.22,1,.36,1);}
+  .progress-txt{font-size:12px;color:var(--soft);text-align:right;margin-top:5px;}
+  .progress-txt b{color:var(--momiji-dark);}
 
-  @media (max-width:840px){
-    .grid-4{grid-template-columns:repeat(2, minmax(0, 1fr));}
-    .weather{grid-template-columns:1fr;}
-  }
-  @media (max-width:640px){
-    .wrap{padding:16px 12px 40px;}
-    .hero{padding:22px 18px 18px;}
-    .countdown{grid-template-columns:1fr;}
-    .grid-2{grid-template-columns:1fr;}
-    .grid-4{grid-template-columns:1fr;}
-    details.trip-day summary{padding:16px;}
-    .trip-body{padding:0 16px 16px;}
-    .timeline li{grid-template-columns:1fr;gap:6px;padding:12px 0;}
-    .time{font-size:12px;}
-    .date-badge{flex-basis:64px;padding:9px 6px;}
-    .day-top h3{font-size:17px;}
-  }
+  footer{text-align:center;margin-top:26px;font-size:11.5px;color:var(--soft);}
 
+  #leaves{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  #topBtn{
+    position:fixed;
+    right:16px;
+    bottom:18px;
+    z-index:5;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(160deg,#fff,var(--cream));
+    border:2px solid var(--sakura);
+    font-size:23px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .3s,transform .3s;
+  }
+  #topBtn.show{opacity:1;transform:translateY(0);}
+  #topBtn:hover{transform:translateY(-3px) rotate(-8deg);}
+
+  @media(max-width:480px){
+    .info-grid{grid-template-columns:1fr;}
+    .ttl{font-size:23px;}
+    .trow{flex-direction:column;gap:2px;}
+    .trow .tm{flex:none;}
+  }
   @media print{
-    body{background:#fff;}
-    .hero,.card,.check-card,details.trip-day{box-shadow:none;}
-    .nav{display:none;}
+    body{background:#fff;padding:0;}
+    .box,.info,.check,header,.dtl-day{box-shadow:none;}
+    #leaves,#topBtn{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #leaves{display:none;}
   }
 </style>
 </head>
 <body>
+<canvas id="leaves"></canvas>
 <div class="wrap">
-  <header class="hero">
-    <span class="eyebrow">札幌馬拉松親子旅・2026.10.1 → 10.6</span>
-    <h1>札幌跑旅行前小卡</h1>
-    <p class="hero-sub">先看重點，再決定要不要展開細節。把真正需要記的資訊留在前面，其他備查資訊往後收。</p>
-    <div class="hero-meta">
-      <span class="chip">✈️ 去程 BR116｜10/1 08:00 機場櫃檯會合</span>
+  <header>
+    <div class="ttl">札幌 親子跑旅 🏃‍♀️🏃‍♂️
+      <small>SAPPORO MARATHON TRIP ・ 2026.10.1 → 10.6</small>
+    </div>
+    <div class="subttl">保留上一版的溫暖視覺，但把資訊收斂成先看得懂、再展開細節。</div>
+    <div class="meta">
+      <span class="chip">✈️ 去 <b>BR116</b>｜10/1 08:00 櫃檯會合</span>
+      <span class="chip">✈️ 回 <b>BR115</b>｜10/6 16:15 起飛</span>
       <span class="chip">🏨 暖雪 札幌｜全程連泊</span>
       <span class="chip">🏅 10/4 札幌馬拉松</span>
-      <span class="chip">✈️ 回程 BR115｜10/6 16:15 起飛</span>
     </div>
     <div class="countdown">
-      <div class="cd" id="cdTrip"><div class="num">-</div><div class="lbl">距離出發</div></div>
-      <div class="cd" id="cdRace"><div class="num">-</div><div class="lbl">距離比賽</div></div>
+      <div class="cd" id="cdTrip"><div class="num">-</div><div class="lbl">天後出發 ✈️</div></div>
+      <div class="cd" id="cdRace"><div class="num">-</div><div class="lbl">天後開跑 🏅</div></div>
     </div>
   </header>
 
-  <nav class="nav">
-    <a href="#overview">先看這裡</a>
-    <a href="#race">比賽日</a>
-    <a href="#days">每日安排</a>
-    <a href="#bookings">訂位狀態</a>
-    <a href="#contacts">重要聯絡</a>
-    <a href="#checklist">出發清單</a>
-  </nav>
-
-  <section class="sec" id="overview">
-    <div class="sec-head"><span class="dot"></span><h2>先看這 4 件事</h2></div>
-    <div class="grid grid-4">
-      <article class="card">
-        <h3>10/1 先領號碼布</h3>
-        <p>抵達後直接去 <b>Sports Depo 光星店</b>，最晚 10/3 19:00 前要領完。記得先把四人的 <b>引換メール</b> 截圖存好。</p>
-      </article>
-      <article class="card">
-        <h3>10/4 必帶 My Bottle / Cup</h3>
-        <p>今年是<b>自助給水</b>，半馬與 10K 都沒有紙杯。大會領物會附，但出門前還是要檢查有沒有帶到。</p>
-      </article>
-      <article class="card">
-        <h3>比賽日會分兩邊</h3>
-        <p>爸爸 10K 在 <b>スタジアム側</b>，半馬三人去 <b>さけ科学館側</b>。先約好<b>終點體育場的會合地標</b>。</p>
-      </article>
-      <article class="card">
-        <h3>還有 3 餐待訂</h3>
-        <p><b>10/1 Hood Dog</b>、<b>10/2 政壽司</b>、<b>10/5 かに将軍</b> 還沒訂；10/3 中午與晚餐都已經確認。</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="sec" id="race">
-    <div class="sec-head"><span class="dot"></span><h2>比賽日一頁看懂</h2></div>
-    <p class="sec-note">上面只放真正需要記的流程；更細的時間軸在 10/4 當日卡片裡。</p>
-    <div class="grid grid-2 race-grid">
-      <article class="card">
-        <span class="label">去程</span>
-        <h3>06:45 出門最穩</h3>
-        <ul class="mini-list">
-          <li>飯店步行到 <b>すすきの駅</b>，搭南北線直達 <b>真駒内駅</b>。</li>
-          <li>再轉 <b>10 番のりば臨時巴士</b> 到會場，早到就少排隊。</li>
-          <li>比賽日<b>不能開車或叫車直達會場</b>，最多只能到真駒內站。</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="label">分流</span>
-        <h3>10K 與半馬不同整列區</h3>
-        <ul class="mini-list">
-          <li>爸爸 10K：<b>8:30 集合</b>，9:00 起跑。</li>
-          <li>半馬三人：<b>8:50 / 9:00 集合</b>，9:20 或 9:30 分波起跑。</li>
-          <li>寄物在 <b>スタジアム西側広場</b>，四人都先去寄物再分開。</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="label">必帶</span>
-        <h3>出門前最後檢查</h3>
-        <ul class="mini-list">
-          <li><b>號碼布＋晶片</b>、別針、IC 卡、手機、行動電源。</li>
-          <li><b>My Bottle / Cup</b>、寄物袋、賽後保暖乾衣。</li>
-          <li>早餐走<b>低油低纖</b>：飯糰、吐司、香蕉、運動飲料即可。</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="label">完賽後</span>
-        <h3>先保暖，再會合</h3>
-        <ul class="mini-list">
-          <li>終點都在<b>體育場</b>，完賽後先換乾衣，別讓汗冷下來。</li>
-          <li>全家在先約好的<b>明確地標</b>會合，不要臨時靠訊息找人。</li>
-          <li>回程同樣搭臨時巴士回真駒內站，再回飯店泡湯休息。</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="sec-head"><span class="dot"></span><h2>氣溫與穿著</h2></div>
-    <div class="weather">
-      <article class="card">
-        <h3>白天</h3>
-        <strong>約 18°C</strong>
-        <p>晴天舒服，但走一整天還是建議洋蔥式穿法。</p>
-      </article>
-      <article class="card">
-        <h3>早晚</h3>
-        <strong>約 10°C</strong>
-        <p>入夜明顯變冷，爸媽各帶一件輕羽絨或刷毛背心最實用。</p>
-      </article>
-      <article class="card">
-        <h3>打包方向</h3>
-        <strong>輕保暖</strong>
-        <p>折傘、薄外套、賽後乾衣優先；不需要帶太多厚重冬裝。</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="sec" id="days">
-    <div class="sec-head"><span class="dot"></span><h2>每日安排</h2></div>
-    <p class="sec-note">先看摘要標籤就夠；需要完整時間軸時再展開。</p>
-
-    <details class="trip-day" data-date="2026-10-01">
-      <summary>
-        <div class="date-badge"><span class="date">10/1</span><span class="week">四</span></div>
-        <div class="day-main">
-          <div class="day-top">
-            <h3>抵達札幌＋領號碼布</h3>
-            <span class="chev">›</span>
-          </div>
-          <div class="day-summary">今天的核心任務只有兩件事：順利入住，晚上把號碼布領完。</div>
-          <div class="day-tags">
-            <span class="tag">08:00 機場會合</span>
-            <span class="tag">18:10 前後領號碼布</span>
-            <span class="tag">Hood Dog 待訂</span>
-          </div>
-        </div>
-      </summary>
-      <div class="trip-body">
-        <ul class="timeline">
-          <li><span class="time">08:00</span><div class="desc">在 EVA 長榮櫃檯和爸媽會合，完成報到、託運、過安檢。</div></li>
-          <li><span class="time">15:00</span><div class="desc">抵達新千歲空港，入境與提領行李抓 <b>約 1 小時</b>。</div></li>
-          <li><span class="time">~17:00</span><div class="desc">搭 JR 快速到札幌，再轉東豐線到 <b>豐水すすきの</b>，入住 <b>DANSETSU SAPPORO</b>。</div></li>
-          <li><span class="time">~17:40</span><div class="desc">從飯店出發去 <b>Sports Depo 光星店</b>，東豐線可直達 <b>北13条東</b>，不用轉車。</div></li>
-          <li><span class="time">~18:10</span><div class="desc">領號碼布、T 恤與 My Bottle / Cup。現場要看 <b>引換メール</b>，護照帶著備用。</div></li>
-          <li><span class="time">~19:30</span><div class="desc">回すすきの晚餐，首選 <b>Hood Dog 湯咖哩</b>；若要去，建議先訂位並要求遠離吸菸區。</div></li>
-          <li><span class="time">~21:00</span><div class="desc">回飯店泡湯，今天以早睡為主，不排其他行程。</div></li>
-        </ul>
-        <div class="note-box">
-          <h4>路線提醒</h4>
-          <p>機場到飯店以 JR 最直覺；飯店到光星店則直接搭東豐線最省事。今天不用繞札幌站二次轉車。</p>
-        </div>
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>先看這 4 件事</div>
+    <div class="info-grid">
+      <div class="info">
+        <div class="lab">10/1 晚上</div>
+        <div class="val">先把號碼布領完</div>
+        <div class="sub">去 <b>Sports Depo 光星店</b>，最晚 10/3 19:00 前要完成；四人的 <b>引換メール</b> 先截圖。</div>
       </div>
-    </details>
-
-    <details class="trip-day" data-date="2026-10-02">
-      <summary>
-        <div class="date-badge"><span class="date">10/2</span><span class="week">五</span></div>
-        <div class="day-main">
-          <div class="day-top">
-            <h3>小樽半日慢遊</h3>
-            <span class="chev">›</span>
-          </div>
-          <div class="day-summary">今天走「南小樽進、小樽出」，一路往下坡，比較省力。</div>
-          <div class="day-tags">
-            <span class="tag">南小樽進</span>
-            <span class="tag">政壽司待訂</span>
-            <span class="tag">全程下坡</span>
-          </div>
-        </div>
-      </summary>
-      <div class="trip-body">
-        <ul class="timeline">
-          <li><span class="time">~09:30</span><div class="desc">從札幌搭 JR 到 <b>南小樽駅</b>，出站後開始慢慢散步。</div></li>
-          <li><span class="time">~11:00</span><div class="desc">先去 <b>水天宮</b> 看港景與賽前祈願；下山務必<b>走原路</b>，不要走東側外人坂。</div></li>
-          <li><span class="time">11:30</span><div class="desc">逛堺町通，若想休息可去 <b>北一ホール</b> 喝咖啡；若排隊太長就直接略過。</div></li>
-          <li><span class="time">12:00</span><div class="desc">午餐 <b>おたる政寿司 本店</b>，這餐建議先訂位，避免現場等太久。</div></li>
-          <li><span class="time">13:30</span><div class="desc">飯後走 <b>手宮線跡</b>、小樽運河與淺草橋，節奏以輕鬆拍照為主。</div></li>
-          <li><span class="time">~15:00</span><div class="desc">從 <b>小樽駅</b> 搭 JR 回札幌，回飯店泡湯休息。</div></li>
-        </ul>
-        <div class="note-box">
-          <h4>今天不追的東西</h4>
-          <p>10/2 市區紅葉通常還沒正式轉色，所以重點放在港景、玻璃、壽司與散步，不用硬湊賞楓行程。</p>
-        </div>
+      <div class="info">
+        <div class="lab">10/4 比賽日</div>
+        <div class="val">一定要帶 My Bottle / Cup</div>
+        <div class="sub">今年是 <b>自助給水</b>，沒有紙杯。大會會附，但出門前還是要再檢查一次。</div>
       </div>
-    </details>
-
-    <details class="trip-day" data-date="2026-10-03">
-      <summary>
-        <div class="date-badge"><span class="date">10/3</span><span class="week">六</span></div>
-        <div class="day-main">
-          <div class="day-top">
-            <h3>賽前場勘＋養腿日</h3>
-            <span class="chev">›</span>
-          </div>
-          <div class="day-summary">早上只做場勘，中午與晚上都有訂位，下午回飯店整理裝備。</div>
-          <div class="day-tags">
-            <span class="tag">上午場勘</span>
-            <span class="tag">12:00 午餐已訂</span>
-            <span class="tag">17:00 晚餐已訂</span>
-          </div>
-        </div>
-      </summary>
-      <div class="trip-body">
-        <ul class="timeline">
-          <li><span class="time">~09:30</span><div class="desc">搭南北線直達 <b>真駒内駅</b>，先把明天的進場路線、接駁位置、廁所和寄物方向看一次。</div></li>
-          <li><span class="time">11:10</span><div class="desc">場勘準時收工，別多走，直接回市區準備午餐。</div></li>
-          <li><span class="time">12:00</span><div class="desc">午餐 <b>でめきん</b> 已訂，今天重點就是穩定吃碳水，不要臨時亂加行程。</div></li>
-          <li><span class="time">13:30</span><div class="desc">中島公園散步或直接回飯店休息，跑者與爸媽不必綁在同一路線。</div></li>
-          <li><span class="time">~15:00</span><div class="desc">回飯店整理明早裝備，貼號碼布、擺好衣物、補水、小睡。</div></li>
-          <li><span class="time">17:00</span><div class="desc">晚餐 <b>YS↑O2</b> 已訂，點清爽番茄系或簡單義大利麵，避免高脂、酒精和陌生食物。</div></li>
-          <li><span class="time">21:00</span><div class="desc">提早就寢，明早 6 點前後起床。</div></li>
-        </ul>
-        <div class="note-box">
-          <h4>今天已刪掉的選項</h4>
-          <p>頭大仏已移除，因為施工期間可看性差；大通秋季祭如果只是路過看看可以，但賽前一天不要亂吃。</p>
-        </div>
+      <div class="info">
+        <div class="lab">會場動線</div>
+        <div class="val">10K 與半馬會分兩邊</div>
+        <div class="sub">爸爸去 <b>スタジアム側</b>，半馬三人去 <b>さけ科学館側</b>；先講好完賽後會合地標。</div>
       </div>
-    </details>
-
-    <details class="trip-day race" data-date="2026-10-04" open>
-      <summary>
-        <div class="date-badge"><span class="date">10/4</span><span class="week">日</span></div>
-        <div class="day-main">
-          <div class="day-top">
-            <h3>札幌馬拉松</h3>
-            <span class="chev">›</span>
-          </div>
-          <div class="day-summary">今天的節奏很單純：早起吃早餐、早點進會場、寄物後分流、完賽先保暖再會合。</div>
-          <div class="day-tags">
-            <span class="tag">06:45 出門</span>
-            <span class="tag">爸爸 9:00 起跑</span>
-            <span class="tag">半馬 9:20 / 9:30</span>
-          </div>
-        </div>
-      </summary>
-      <div class="trip-body">
-        <ul class="timeline">
-          <li><span class="time">05:50</span><div class="desc">起床吃賽前早餐：飯糰、白吐司、香蕉、運動飲料即可。出門前確認 <b>號碼布、My Bottle / Cup、寄物袋、保暖乾衣</b> 都在。</div></li>
-          <li><span class="time">06:45</span><div class="desc">從飯店出發，搭南北線到 <b>真駒内駅</b>，再轉 <b>10 番のりば臨時巴士</b> 進會場。</div></li>
-          <li><span class="time">~07:30</span><div class="desc">抵達後先寄物、上廁所、暖身，不要拖到集合前才開始整理。</div></li>
-          <li><span class="time">08:15</span><div class="desc">爸爸先去 10K 整列區，<b>8:30 集合</b>；半馬三人不要一起跟過去。</div></li>
-          <li><span class="time">08:35</span><div class="desc">半馬三人去 <b>さけ科学館側</b> 整列區，依號碼布字母找分區。</div></li>
-          <li><span class="time">09:00</span><div class="desc">爸爸 10K 起跑。</div></li>
-          <li><span class="time">09:20 / 09:30</span><div class="desc">半馬分波起跑。沿途是<b>自助給水</b>，沒有紙杯。</div></li>
-          <li><span class="time">~11:00 起</span><div class="desc">大家陸續完賽，先領物資、換乾衣，再去約好的地標會合。</div></li>
-          <li><span class="time">~12:30</span><div class="desc">搭臨時巴士回真駒內站，再回飯店泡湯休息；慶功大餐留到隔天。</div></li>
-        </ul>
-        <div class="note-box">
-          <h4>關鍵提醒</h4>
-          <p>爸爸 10K 與半馬三人的整列區不同，今天最容易亂的是「一起行動到最後一刻」。寄物之後就要果斷分開走。</p>
-        </div>
-      </div>
-    </details>
-
-    <details class="trip-day" data-date="2026-10-05">
-      <summary>
-        <div class="date-badge"><span class="date">10/5</span><span class="week">一</span></div>
-        <div class="day-main">
-          <div class="day-top">
-            <h3>賽後恢復日</h3>
-            <span class="chev">›</span>
-          </div>
-          <div class="day-summary">今天以恢復為主，白天走慢一點，傍晚上藻岩山，晚上再吃正式慶功餐。</div>
-          <div class="day-tags">
-            <span class="tag">自然醒</span>
-            <span class="tag">16:15 藻岩山</span>
-            <span class="tag">かに将軍待訂</span>
-          </div>
-        </div>
-      </summary>
-      <div class="trip-body">
-        <ul class="timeline">
-          <li><span class="time">上午</span><div class="desc">自然醒，想吃海鮮或二條市場輕食都可以，不需要一早衝景點。</div></li>
-          <li><span class="time">11:00</span><div class="desc">午餐可吃 <b>Suage+</b> 湯咖哩，距離近、節奏輕鬆。</div></li>
-          <li><span class="time">下午</span><div class="desc">回飯店休息或在大通附近散步，讓腿真的恢復。</div></li>
-          <li><span class="time">16:15</span><div class="desc">前往 <b>藻岩山</b>，抓日落前上山，白天景、夕陽、夜景一次看完。</div></li>
-          <li><span class="time">19:30</span><div class="desc">晚餐首選 <b>かに将軍</b>，這餐適合當正式慶功餐，建議提前訂位。</div></li>
-        </ul>
-        <div class="note-box">
-          <h4>藻岩山重點</h4>
-          <p>10/5 上山的主賣點是夜景，不是紅葉。全程市電＋接駁＋纜車，對長輩算友善。</p>
-        </div>
-      </div>
-    </details>
-
-    <details class="trip-day" data-date="2026-10-06">
-      <summary>
-        <div class="date-badge"><span class="date">10/6</span><span class="week">二</span></div>
-        <div class="day-main">
-          <div class="day-top">
-            <h3>採買＋回程</h3>
-            <span class="chev">›</span>
-          </div>
-          <div class="day-summary">今天所有安排都要以機場時間倒推，採買有就好，不要壓線。</div>
-          <div class="day-tags">
-            <span class="tag">11:00 退房</span>
-            <span class="tag">13:00 前往機場</span>
-            <span class="tag">BR115 16:15</span>
-          </div>
-        </div>
-      </summary>
-      <div class="trip-body">
-        <ul class="timeline">
-          <li><span class="time">上午</span><div class="desc">可先做 EVA 線上報到，再去狸小路或大通買最後的伴手禮。</div></li>
-          <li><span class="time">11:00 前</span><div class="desc">退房並寄放行李，之後不要再排太遠的行程。</div></li>
-          <li><span class="time">最晚 13:00</span><div class="desc">取行李出發去新千歲國際線航廈，門到門抓 <b>60–75 分鐘</b>。</div></li>
-          <li><span class="time">~15:15</span><div class="desc">櫃檯關閉前完成報到與託運。</div></li>
-          <li><span class="time">16:15</span><div class="desc">搭 BR115 回台北。</div></li>
-        </ul>
-      </div>
-    </details>
-  </section>
-
-  <section class="sec" id="bookings">
-    <div class="sec-head"><span class="dot"></span><h2>訂位狀態</h2></div>
-    <div class="grid grid-2">
-      <article class="card booking">
-        <div>
-          <h3>10/1 晚餐｜Hood Dog</h3>
-          <p>湯咖哩，離飯店近；若要去建議先訂，並備註想坐遠離吸菸區。</p>
-        </div>
-        <span class="status pending">待訂</span>
-      </article>
-      <article class="card booking">
-        <div>
-          <h3>10/2 午餐｜政壽司本店</h3>
-          <p>中午熱門，這餐若沒訂位，當天時間會很容易被排隊吃掉。</p>
-        </div>
-        <span class="status pending">待訂</span>
-      </article>
-      <article class="card booking">
-        <div>
-          <h3>10/3 兩餐｜でめきん ＋ YS↑O2</h3>
-          <p>中午與晚上都已確認，賽前一天就照原計畫，不再換餐廳。</p>
-        </div>
-        <span class="status done">已訂</span>
-      </article>
-      <article class="card booking">
-        <div>
-          <h3>10/5 晚餐｜かに将軍</h3>
-          <p>適合當正式慶功餐，假日晚場容易滿，建議提早處理。</p>
-        </div>
-        <span class="status pending">待訂</span>
-      </article>
-    </div>
-  </section>
-
-  <section class="sec" id="contacts">
-    <div class="sec-head"><span class="dot"></span><h2>重要聯絡</h2></div>
-    <div class="grid grid-2">
-      <article class="card">
-        <h3>暖雪 札幌</h3>
-        <p><a href="tel:0115904177">011-590-4177</a><br>中央区南6条東2丁目1-1<br>豐水すすきの駅徒步 4 分，退房 11:00。</p>
-      </article>
-      <article class="card">
-        <h3>Sports Depo 光星店</h3>
-        <p><a href="tel:0117211565">011-721-1565</a><br>東区北9条東4丁目1-10<br>10:00–21:00，領號碼布地點。</p>
-      </article>
-      <article class="card">
-        <h3>札幌馬拉松主辦</h3>
-        <p><a href="tel:0115305562">011-530-5562</a><br>平日 9:00–17:00。</p>
-      </article>
-      <article class="card">
-        <h3>當日確認電話</h3>
-        <p><a href="tel:05036659603">050-3665-9603</a><br>若當天遇到天候或臨時公告，可先打這支確認。</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="sec" id="checklist">
-    <div class="sec-head"><span class="dot"></span><h2>出發前確認清單</h2></div>
-    <div class="check-card">
-      <div class="progress">
-        <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
-        <div class="progress-text"><b id="progNum">0</b> / <span id="progTotal">0</span> 完成 ・ <span id="progText">先把最重要的幾件事勾完。</span></div>
-      </div>
-      <div class="checklist" id="checklistBox">
-        <label><input type="checkbox">四人的引換メール都找到了，而且已經先截圖存在手機裡。</label>
-        <label><input type="checkbox">每人都會帶 <b>My Bottle / My Cup</b>，知道比賽日沒有紙杯。</label>
-        <label><input type="checkbox">10/1 晚上去光星店領號碼布、T 恤與配件。</label>
-        <label><input type="checkbox">領號碼布後會立刻確認半馬三人的波次與整列字母。</label>
-        <label><input type="checkbox">四人已經講好 10/4 完賽後在體育場的會合地標。</label>
-        <label><input type="checkbox">10/1、10/2、10/5 三餐待訂項目已處理完。</label>
-        <label><input type="checkbox">賽事裝備、賽後乾衣、行動電源、IC 卡都已經整理好。</label>
-        <label><input type="checkbox">爸媽的保暖層、折傘與洋蔥式衣物都已備妥。</label>
-        <label><input type="checkbox">10/6 回程時間已倒推，最晚 13:00 會離開飯店去機場。</label>
-        <label><input type="checkbox">日幣現金與交通 IC 卡都已準備好。</label>
+      <div class="info">
+        <div class="lab">目前待辦</div>
+        <div class="val">還有 3 餐待訂</div>
+        <div class="sub"><b>10/1 Hood Dog</b>、<b>10/2 政壽司</b>、<b>10/5 かに将軍</b>；10/3 兩餐已確認。</div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🏅 比賽日重點 ・ 10/4(日)</div>
+    <div class="box warn">
+      <div class="box-h">🚨 真正要記住的是這幾件事</div>
+      <ul>
+        <li><b class="hl">自助給水制</b>：半馬與 10K 都沒有紙杯，<b>My Bottle / Cup 必帶</b>。</li>
+        <li>爸爸 10K 與半馬三人的<b>整列區不同</b>，寄物後就要分開走，不要拖到最後一刻才分流。</li>
+        <li>比賽日<b>不能開車或叫車直達會場</b>，最多只能到 <b>真駒内駅</b>，最後一段是接駁巴士或步行。</li>
+        <li>終點都在<b>體育場</b>，四人完賽時間不同，請先約好<b>明確會合地標</b>。</li>
+      </ul>
+    </div>
+    <div class="info-grid">
+      <div class="info">
+        <div class="lab">爸爸 10K</div>
+        <div class="val">8:30 集合 ・ 9:00 起跑</div>
+        <div class="sub">整列在 <b>スタジアム側</b>。06:45 出門、07:30 前抵達會場最穩。</div>
+      </div>
+      <div class="info">
+        <div class="lab">媽媽・我・先生 半馬</div>
+        <div class="val">8:50 / 9:00 集合 ・ 9:20 / 9:30 起跑</div>
+        <div class="sub">整列在 <b>さけ科学館側</b>。依領物後確認的波次與字母分區入列。</div>
+      </div>
+    </div>
+    <div class="box tip">
+      <div class="box-h">🧃 出門前最後檢查</div>
+      <ul>
+        <li><b>號碼布＋晶片</b>、別針、IC 卡、手機、行動電源。</li>
+        <li><b>My Bottle / Cup</b>、寄物袋、賽後保暖乾衣。</li>
+        <li>早餐走 <b>低油低纖</b>：飯糰、白吐司、香蕉、運動飲料即可。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🌡️ 氣溫與穿著</div>
+    <div class="info-grid">
+      <div class="info">
+        <div class="lab">白天</div>
+        <div class="val">約 18℃</div>
+        <div class="sub">晴天舒服，但一整天在外面走還是建議洋蔥式穿法。</div>
+      </div>
+      <div class="info">
+        <div class="lab">早晚</div>
+        <div class="val">約 10℃</div>
+        <div class="sub">爸媽各帶一件輕羽絨或刷毛背心最實際，入夜會明顯變冷。</div>
+      </div>
+    </div>
+    <div class="box tip">
+      <div class="box-h">🧥 打包方向</div>
+      <ul>
+        <li>優先帶 <b>薄外套、折傘、賽後乾衣</b>，不需要帶太多厚重冬裝。</li>
+        <li>比賽後會流汗降溫，<b>賽後能立刻換上的乾衣</b>比多一件毛衣更重要。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>📅 每日安排</div>
+    <div class="sec-sub">先看每一天的主軸，需要細節再點開。</div>
+
+    <div class="dtl-day" data-date="2026-10-01">
+      <div class="dtl-head tap"><span class="d">10/1</span><span class="w">四</span><span class="ti">🛬 抵達札幌 ＋ 領號碼布</span><span class="chev">›</span></div>
+      <div class="trow hi"><div class="tm">主軸</div><div class="tx">今天只做兩件事：<b>順利入住</b>，以及把 <b>號碼布領完</b>。</div></div>
+      <div class="trow"><div class="tm">08:00</div><div class="tx">在 EVA 長榮櫃檯和爸媽會合，完成報到、託運、過安檢。</div></div>
+      <div class="trow"><div class="tm">~17:00</div><div class="tx">抵達後搭 JR ＋ 東豐線到 <b>暖雪 札幌</b>，先入住放行李。</div></div>
+      <div class="trow hi"><div class="tm">~18:10</div><div class="tx">去 <b>Sports Depo 光星店</b> 領號碼布、T 恤與 My Bottle / Cup，現場要看 <b>引換メール</b>。</div></div>
+      <div class="trow"><div class="tm">~19:30</div><div class="tx">回すすきの吃晚餐，首選 <b>Hood Dog</b>；若要去，建議先訂位並註明遠離吸菸區。</div></div>
+      <div class="more-hint">👆 點標題看今天的路線提醒</div>
+      <div class="dtl-extra">
+        <div class="box tip" style="margin-bottom:0;">
+          <div class="box-h">🚆 今天最省事的走法</div>
+          <ul>
+            <li>機場到飯店：<b>JR 快速 → 東豐線</b> 最直覺。</li>
+            <li>飯店到光星店：直接搭 <b>東豐線到北13条東</b>，不用再繞札幌站轉車。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dtl-day" data-date="2026-10-02">
+      <div class="dtl-head tap"><span class="d">10/2</span><span class="w">五</span><span class="ti">🚃 小樽半日慢遊</span><span class="chev">›</span></div>
+      <div class="trow hi"><div class="tm">主軸</div><div class="tx">走 <b>南小樽進、小樽出</b>，一路往下坡，比較省力。</div></div>
+      <div class="trow"><div class="tm">~09:30</div><div class="tx">從札幌搭 JR 到 <b>南小樽駅</b>，出站後開始散步。</div></div>
+      <div class="trow hi"><div class="tm">~11:00</div><div class="tx">先去 <b>水天宮</b> 看港景與賽前祈願；下山務必<b>走原路</b>，不要走東側外人坂。</div></div>
+      <div class="trow"><div class="tm">12:00</div><div class="tx">午餐 <b>政壽司本店</b>，這餐建議先訂位，避免現場排隊拖到節奏。</div></div>
+      <div class="trow"><div class="tm">13:30</div><div class="tx">飯後走 <b>手宮線跡</b>、小樽運河與淺草橋，拍照就好，不用再硬塞景點。</div></div>
+      <div class="more-hint">👆 點標題看今天的簡短提醒</div>
+      <div class="dtl-extra">
+        <div class="box tip" style="margin-bottom:0;">
+          <div class="box-h">🍁 今天不追的東西</div>
+          <ul>
+            <li>10/2 市區紅葉通常還沒正式轉色，今天重點是<b>港景、玻璃、壽司與散步</b>。</li>
+            <li>若 <b>北一ホール</b> 排太久，就直接略過，不要為了咖啡卡住整天節奏。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dtl-day" data-date="2026-10-03">
+      <div class="dtl-head tap"><span class="d">10/3</span><span class="w">六</span><span class="ti">🏟️ 賽前場勘 ＋ 養腿</span><span class="chev">›</span></div>
+      <div class="trow hi"><div class="tm">主軸</div><div class="tx">早上只做場勘，中午與晚上都有訂位，下午回飯店整理裝備。</div></div>
+      <div class="trow"><div class="tm">~09:30</div><div class="tx">搭南北線直達 <b>真駒内駅</b>，把明天的進場動線、接駁位置、廁所和寄物方向看一次。</div></div>
+      <div class="trow hi"><div class="tm">11:10</div><div class="tx">場勘準時收工，不多走，直接回市區接午餐。</div></div>
+      <div class="trow"><div class="tm">12:00</div><div class="tx"><b>でめきん</b> 午餐已訂，今天吃穩定就好，不要臨時換餐廳。</div></div>
+      <div class="trow"><div class="tm">~15:00</div><div class="tx">回飯店整理明早裝備，貼號碼布、擺好衣物、補水、小睡。</div></div>
+      <div class="trow hi"><div class="tm">17:00</div><div class="tx"><b>YS↑O2</b> 晚餐已訂，點清爽番茄系或簡單義大利麵，避免高脂、酒精和陌生食物。</div></div>
+      <div class="more-hint">👆 點標題看今天不排的東西</div>
+      <div class="dtl-extra">
+        <div class="box tip" style="margin-bottom:0;">
+          <div class="box-h">🗓️ 今天刻意不做的事</div>
+          <ul>
+            <li><b>頭大仏</b> 已移除，施工期間可看性差，不值得花時間和腳力。</li>
+            <li>大通秋季祭如果只是路過看看可以，但<b>賽前一天不要亂吃</b>。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dtl-day race open" data-date="2026-10-04">
+      <div class="dtl-head tap"><span class="d">10/4</span><span class="w">日</span><span class="ti">🏅 札幌馬拉松</span><span class="chev">›</span></div>
+      <div class="trow hi"><div class="tm">05:50</div><div class="tx">起床吃賽前早餐：飯糰、白吐司、香蕉、運動飲料即可。出門前確認 <b>號碼布、My Bottle / Cup、寄物袋、保暖乾衣</b> 都在。</div></div>
+      <div class="trow hi"><div class="tm">06:45</div><div class="tx">從飯店出發，搭南北線到 <b>真駒内駅</b>，再轉 <b>10 番のりば臨時巴士</b> 進會場。</div></div>
+      <div class="trow"><div class="tm">~07:30</div><div class="tx">抵達後先寄物、上廁所、暖身，不要拖到集合前才開始整理。</div></div>
+      <div class="trow hi"><div class="tm">08:15</div><div class="tx">爸爸先去 10K 整列區，<b>8:30 集合</b>；半馬三人不要一起跟過去。</div></div>
+      <div class="trow"><div class="tm">08:35</div><div class="tx">半馬三人去 <b>さけ科学館側</b> 整列區，依號碼布字母找分區。</div></div>
+      <div class="trow hi"><div class="tm">09:00</div><div class="tx">爸爸 10K 起跑。</div></div>
+      <div class="trow hi"><div class="tm">09:20 / 09:30</div><div class="tx">半馬分波起跑。沿途是<b>自助給水</b>，沒有紙杯。</div></div>
+      <div class="trow"><div class="tm">~11:00起</div><div class="tx">大家陸續完賽，先領物資、換乾衣，再去約好的地標會合。</div></div>
+      <div class="trow"><div class="tm">~12:30</div><div class="tx">搭臨時巴士回真駒內站，再回飯店泡湯休息；慶功大餐留到隔天。</div></div>
+    </div>
+
+    <div class="dtl-day" data-date="2026-10-05">
+      <div class="dtl-head tap"><span class="d">10/5</span><span class="w">一</span><span class="ti">🍜 賽後恢復日</span><span class="chev">›</span></div>
+      <div class="trow hi"><div class="tm">主軸</div><div class="tx">今天以恢復為主，白天走慢一點，傍晚上藻岩山，晚上再吃正式慶功餐。</div></div>
+      <div class="trow"><div class="tm">上午</div><div class="tx">自然醒，想吃海鮮或二條市場輕食都可以，不需要一早衝景點。</div></div>
+      <div class="trow"><div class="tm">11:00</div><div class="tx">午餐可吃 <b>Suage+</b> 湯咖哩，距離近、節奏輕鬆。</div></div>
+      <div class="trow hi"><div class="tm">16:15</div><div class="tx">前往 <b>藻岩山</b>，抓日落前上山，白天景、夕陽、夜景一次看完。</div></div>
+      <div class="trow"><div class="tm">19:30</div><div class="tx">晚餐首選 <b>かに将軍</b>，這餐適合當正式慶功餐，建議提前訂位。</div></div>
+      <div class="more-hint">👆 點標題看今天的提醒</div>
+      <div class="dtl-extra">
+        <div class="box tip" style="margin-bottom:0;">
+          <div class="box-h">🌃 今天的期待值</div>
+          <ul>
+            <li>藻岩山的主賣點是<b>夜景</b>，不是紅葉，這樣心裡比較不會落差。</li>
+            <li>腿如果還很痠，下午就以<b>休息優先</b>，不要硬走滿行程。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dtl-day" data-date="2026-10-06">
+      <div class="dtl-head tap"><span class="d">10/6</span><span class="w">二</span><span class="ti">🎁 採買 ＋ 回程</span><span class="chev">›</span></div>
+      <div class="trow hi"><div class="tm">主軸</div><div class="tx">今天所有安排都要以<b>機場時間倒推</b>，採買有就好，不要壓線。</div></div>
+      <div class="trow"><div class="tm">上午</div><div class="tx">可先做 EVA 線上報到，再去狸小路或大通買最後的伴手禮。</div></div>
+      <div class="trow hi"><div class="tm">11:00前</div><div class="tx">退房並寄放行李，之後不要再排太遠的行程。</div></div>
+      <div class="trow hi"><div class="tm">最晚13:00</div><div class="tx">取行李出發去新千歲國際線航廈，門到門抓 <b>60–75 分鐘</b>。</div></div>
+      <div class="trow"><div class="tm">16:15</div><div class="tx">搭 <b>BR115</b> 回台北。</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>🍽️ 訂位狀態</div>
+    <div class="info-grid">
+      <div class="info">
+        <div class="state pending">待訂</div>
+        <div class="lab">10/1 晚餐</div>
+        <div class="val">Hood Dog</div>
+        <div class="sub">湯咖哩，離飯店近；若要去建議先訂並備註遠離吸菸區。</div>
+      </div>
+      <div class="info">
+        <div class="state pending">待訂</div>
+        <div class="lab">10/2 午餐</div>
+        <div class="val">政壽司本店</div>
+        <div class="sub">中午熱門，這餐若沒訂位，當天時間很容易被排隊吃掉。</div>
+      </div>
+      <div class="info">
+        <div class="state done">已訂</div>
+        <div class="lab">10/3 午晚餐</div>
+        <div class="val">でめきん ＋ YS↑O2</div>
+        <div class="sub">中午與晚上都已確認，賽前一天就照原計畫，不再換餐廳。</div>
+      </div>
+      <div class="info">
+        <div class="state pending">待訂</div>
+        <div class="lab">10/5 晚餐</div>
+        <div class="val">かに将軍</div>
+        <div class="sub">適合當正式慶功餐，假日晚場容易滿，建議提早處理。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>📞 重要聯絡資訊</div>
+    <div class="info-grid">
+      <div class="info"><div class="lab">🏨 暖雪 札幌</div><div class="val"><a href="tel:0115904177">011-590-4177</a></div><div class="sub">中央区南6条東2丁目1-1<br>豐水すすきの駅徒步 4 分・退房 11:00</div></div>
+      <div class="info"><div class="lab">🛍️ Sports Depo 光星店</div><div class="val"><a href="tel:0117211565">011-721-1565</a></div><div class="sub">東区北9条東4丁目1-10<br>10:00–21:00・領號碼布地點</div></div>
+      <div class="info"><div class="lab">🏃 札幌馬拉松主辦</div><div class="val"><a href="tel:0115305562">011-530-5562</a></div><div class="sub">平日 9:00–17:00</div></div>
+      <div class="info"><div class="lab">☎️ 當日確認電話</div><div class="val"><a href="tel:05036659603">050-3665-9603</a></div><div class="sub">若遇到天候或臨時公告，可先打這支確認</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dot"></span>✅ 出發前確認清單</div>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+      <div class="progress-txt"><b id="progNum">0</b> / <span id="progTotal">10</span> 完成　<span id="progEmoji">🐿️ 先把最重要的幾件事勾完。</span></div>
+    </div>
+    <div class="check" id="checklist">
+      <label><input type="checkbox">四人的 <b>引換メール</b> 都找到了，而且已經先截圖存在手機裡。</label>
+      <label><input type="checkbox">每人都會帶 <b>My Bottle / My Cup</b>，知道比賽日沒有紙杯。</label>
+      <label><input type="checkbox">10/1 晚上會去光星店領號碼布、T 恤與配件。</label>
+      <label><input type="checkbox">領號碼布後會立刻確認半馬三人的波次與整列字母。</label>
+      <label><input type="checkbox">四人已經講好 10/4 完賽後在體育場的會合地標。</label>
+      <label><input type="checkbox">10/1、10/2、10/5 三餐待訂項目已處理完。</label>
+      <label><input type="checkbox">賽事裝備、賽後乾衣、行動電源、IC 卡都已經整理好。</label>
+      <label><input type="checkbox">爸媽的保暖層、折傘與洋蔥式衣物都已備妥。</label>
+      <label><input type="checkbox">10/6 回程時間已倒推，最晚 13:00 會離開飯店去機場。</label>
+      <label><input type="checkbox">日幣現金與交通 IC 卡都已準備好。</label>
+    </div>
+  </div>
 
   <footer>
-    全家順利完賽，旅途輕鬆好走。
+    🌸 保留好看外觀，內容改成更容易一眼讀懂 🌸
   </footer>
 </div>
+
+<button id="topBtn" title="回到頂部">🐿️</button>
 
 <script>
 (function(){
   "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function daysUntil(target){
     var now = new Date();
-    var targetDate = new Date(target + "T00:00:00");
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    return Math.round((targetDate - today) / 86400000);
+    var t = new Date(target + 'T00:00:00');
+    var d0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return Math.round((t - d0) / 86400000);
   }
 
-  function setCountdown(id, days, liveLabel, doneLabel){
-    var root = document.getElementById(id);
-    if(!root) return;
-    var num = root.querySelector(".num");
-    var lbl = root.querySelector(".lbl");
+  function setCd(id, days, goLabel){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var num = el.querySelector('.num');
     if(days > 0){
       num.textContent = days;
-      lbl.textContent = liveLabel;
-      return;
+    }else if(days === 0){
+      num.textContent = '今天';
+      el.classList.add('go');
+      el.querySelector('.lbl').textContent = goLabel;
+    }else{
+      num.textContent = '✓';
+      el.classList.add('go');
+      el.querySelector('.lbl').textContent = '旅程回憶 ♥';
     }
-    if(days === 0){
-      num.textContent = "今天";
-      lbl.textContent = doneLabel;
-      return;
-    }
-    num.textContent = "已過";
-    lbl.textContent = "留給回憶";
   }
 
-  setCountdown("cdTrip", daysUntil("2026-10-01"), "距離出發", "出發日");
-  setCountdown("cdRace", daysUntil("2026-10-04"), "距離比賽", "比賽日");
+  setCd('cdTrip', daysUntil('2026-10-01'), '出發日！');
+  setCd('cdRace', daysUntil('2026-10-04'), '開跑日！');
 
-  (function openToday(){
-    var now = new Date();
-    var iso = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
-    var day = document.querySelector('details.trip-day[data-date="' + iso + '"]');
-    if(day){ day.open = true; }
+  (function(){
+    var today = new Date();
+    var iso = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+    var el = document.querySelector('.dtl-day[data-date="' + iso + '"]');
+    if(el){
+      el.classList.add('today');
+      el.classList.add('open');
+    }
   })();
 
-  var boxes = document.querySelectorAll('#checklistBox input[type="checkbox"]');
-  var total = boxes.length;
-  var totalEl = document.getElementById("progTotal");
-  var numEl = document.getElementById("progNum");
-  var fillEl = document.getElementById("progFill");
-  var textEl = document.getElementById("progText");
-
-  totalEl.textContent = total;
-
-  function refreshProgress(){
-    var done = 0;
-    boxes.forEach(function(box, index){
-      var row = box.parentElement;
-      var key = "sapporo_check_" + index;
-      if(localStorage.getItem(key) === "1"){
-        box.checked = true;
-      }
-      row.classList.toggle("done", box.checked);
-      if(box.checked){ done += 1; }
+  (function(){
+    document.querySelectorAll('.dtl-head.tap').forEach(function(h){
+      h.addEventListener('click', function(){
+        h.closest('.dtl-day').classList.toggle('open');
+      });
     });
+  })();
 
+  var boxes = document.querySelectorAll('#checklist input[type=checkbox]');
+  var total = boxes.length;
+  document.getElementById('progTotal').textContent = total;
+
+  function refresh(){
+    var done = 0;
+    boxes.forEach(function(b){ if(b.checked) done++; });
     var pct = total ? Math.round(done / total * 100) : 0;
-    numEl.textContent = done;
-    fillEl.style.width = pct + "%";
-
-    if(done === 0){ textEl.textContent = "先把最重要的幾件事勾完。"; }
-    else if(done < total / 2){ textEl.textContent = "進度過半前，先把餐廳和比賽用品搞定。"; }
-    else if(done < total){ textEl.textContent = "差不多了，剩下的是收尾。"; }
-    else { textEl.textContent = "可以安心出發了。"; }
+    document.getElementById('progFill').style.width = pct + '%';
+    document.getElementById('progNum').textContent = done;
+    var e = document.getElementById('progEmoji');
+    if(done === 0) e.textContent = '🐿️ 先把最重要的幾件事勾完。';
+    else if(done < total / 2) e.textContent = '🍂 先把餐廳和比賽用品搞定。';
+    else if(done < total) e.textContent = '🔥 差不多了，剩下是收尾。';
+    else e.textContent = '🎉 可以安心出發了。';
   }
 
-  boxes.forEach(function(box, index){
-    box.addEventListener("change", function(){
-      localStorage.setItem("sapporo_check_" + index, box.checked ? "1" : "0");
-      refreshProgress();
+  boxes.forEach(function(b, i){
+    var key = 'spr_chk_' + i;
+    if(localStorage.getItem(key) === '1'){
+      b.checked = true;
+      b.parentElement.classList.add('done');
+    }
+    b.addEventListener('change', function(){
+      localStorage.setItem(key, b.checked ? '1' : '0');
+      b.parentElement.classList.toggle('done', b.checked);
+      refresh();
     });
   });
+  refresh();
 
-  refreshProgress();
+  var topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', function(){
+    topBtn.classList.toggle('show', window.scrollY > 400);
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  if(!reduce){
+    var cv = document.getElementById('leaves');
+    var ctx = cv.getContext('2d');
+    var W, H, parts = [];
+    var glyphs = ['🍁','🍂','🌸','❄️'];
+
+    function resize(){
+      W = cv.width = window.innerWidth;
+      H = cv.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var N = Math.min(18, Math.floor(W / 55));
+    for(var i = 0; i < N; i++){
+      parts.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        s: 14 + Math.random() * 12,
+        v: 0.3 + Math.random() * 0.7,
+        sway: Math.random() * Math.PI * 2,
+        sw: 0.005 + Math.random() * 0.01,
+        amp: 8 + Math.random() * 16,
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.02,
+        g: glyphs[i % glyphs.length]
+      });
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalAlpha = 0.55;
+      parts.forEach(function(p){
+        p.y += p.v;
+        p.sway += p.sw;
+        p.rot += p.vr;
+        var dx = Math.sin(p.sway) * p.amp;
+        if(p.y > H + 20){
+          p.y = -20;
+          p.x = Math.random() * W;
+        }
+        ctx.save();
+        ctx.translate(p.x + dx, p.y);
+        ctx.rotate(p.rot);
+        ctx.font = p.s + 'px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(p.g, 0, 0);
+        ctx.restore();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
 })();
 </script>
 </body>
